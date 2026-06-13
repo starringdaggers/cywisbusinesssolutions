@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cywis Business Solutions</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f2340;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1rem 3rem;
+    }
+
+    .logo-circle {
+      font-size: 36px;
+      font-weight: 700;
+      background: #1D9E75;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      letter-spacing: -1px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .tagline {
+      font-size: 14px;
+      opacity: 0.65;
+      text-align: center;
+      margin-top: 6px;
+      margin-bottom: 2rem;
+      max-width: 280px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .phones {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 2.5rem;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .phone-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 14px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+
+    .phone-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .phone-icon {
+      font-size: 20px;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      max-width: 380px;
+      margin-bottom: 3rem;
+    }
+
+    .svc-badge {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+    }
+
+    .divider {
+      width: 100%;
+      max-width: 340px;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 0 auto 2rem;
+    }
+
+    .whatsapp-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: opacity 0.15s;
+    }
+
+    .whatsapp-btn:hover { opacity: 0.9; }
+
+    .footer {
+      font-size: 11px;
+      opacity: 0.35;
+      text-align: center;
+      max-width: 300px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-circle">C</div>
+  <h1>Cywis Business Solutions</h1>
+  <p class="tagline">Empowering Business Through Tech, Creativity &amp; Precision.</p>
+
+  <p class="section-label">Call us</p>
+  <div class="phones">
+    <a class="phone-btn" href="tel:+2348021104657">
+      <span class="phone-icon">📞</span>
+      +234 802 110 4657
+    </a>
+    <a class="phone-btn" href="tel:+2348032080783">
+      <span class="phone-icon">📞</span>
+      +234 803 2080 783
+    </a>
+  </div>
+
+  <a class="whatsapp-btn" href="https://wa.me/2348021104657" target="_blank">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.885a.5.5 0 0 0 .606.607l6.162-1.52A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.88 9.88 0 0 1-5.031-1.374l-.36-.214-3.733.921.959-3.638-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.467 0 9.9 4.434 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/>
+    </svg>
+    Chat on WhatsApp
+  </a>
+
+  <hr class="divider">
+
+  <p class="section-label">Our services — we print on demand</p>
+  <div class="services">
+    <span class="svc-badge">☕ Mug printing</span>
+    <span class="svc-badge">🛍 Carrier bag</span>
+    <span class="svc-badge">🛍 Nylon bag</span>
+    <span class="svc-badge">💳 Business card</span>
+    <span class="svc-badge">🪪 Plastic ID card</span>
+    <span class="svc-badge">📓 Binded notepad</span>
+    <span class="svc-badge">🍶 Plastic bottle</span>
+    <span class="svc-badge">🧾 Invoice / receipt</span>
+    <span class="svc-badge">👕 T-shirt printing</span>
+    <span class="svc-badge">🪧 Rollup stand</span>
+  </div>
+
+  <p class="footer">
+    Customised &nbsp;·&nbsp; Premium quality &nbsp;·&nbsp; Affordable &nbsp;·&nbsp; Anytime<br>
+    Lagos, Nigeria
+  </p>
+
+</body>
+</html>
