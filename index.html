@@ -7,17 +7,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy:       #001433;
-      --navy-dark:  #000d22;
-      --navy-mid:   #002060;
-      --yellow:     #F5C100;
-      --yellow-lt:  #FFD740;
-      --yellow-dk:  #C9A000;
-      --white:      #ffffff;
-      --off-white:  #f4f6fa;
-      --gray:       #8a95a8;
-      --border:     rgba(255,255,255,0.1);
-      --border-y:   rgba(245,193,0,0.35);
+      --skyblue:       #00A3E0;
+      --skyblue-dark:  #0077A8;
+      --skyblue-mid:   #0086B8;
+      --skyblue-light: #E6F4FA;
+      --yellow:        #F5C100;
+      --yellow-lt:     #FFD740;
+      --yellow-dk:     #C9A000;
+      --white:         #ffffff;
+      --off-white:     #f8fafc;
+      --gray:          #64748b;
+      --dark-text:     #0f172a;
+      --border:        rgba(0,163,224,0.15);
+      --border-y:      rgba(245,193,0,0.35);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,15 +28,15 @@
     body {
       font-family: 'Raleway', sans-serif;
       background: var(--off-white);
-      color: #1a1a2e;
+      color: var(--dark-text);
       overflow-x: hidden;
     }
 
     /* ── TOP BAR ── */
     .topbar {
-      background: var(--navy-dark);
+      background: var(--skyblue-dark);
       padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .topbar-inner {
       max-width: 1100px; margin: 0 auto;
@@ -45,22 +47,22 @@
     .topbar-left { display: flex; gap: 24px; flex-wrap: wrap; }
     .topbar-item {
       display: flex; align-items: center; gap: 6px;
-      font-size: 11px; color: rgba(255,255,255,0.6);
+      font-size: 11px; color: rgba(255,255,255,0.9);
       letter-spacing: 0.5px;
     }
     .topbar-item span { color: var(--yellow); font-size: 13px; }
     .topbar-socials { display: flex; gap: 14px; }
     .topbar-socials a {
-      color: rgba(255,255,255,0.45); font-size: 13px;
+      color: rgba(255,255,255,0.85); font-size: 13px;
       text-decoration: none; transition: color 0.2s;
     }
     .topbar-socials a:hover { color: var(--yellow); }
 
     /* ── NAV ── */
     nav {
-      background: var(--navy);
+      background: var(--skyblue);
       position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 2px 20px rgba(0,163,224,0.15);
     }
     .nav-inner {
       max-width: 1100px; margin: 0 auto;
@@ -93,7 +95,7 @@
       display: block; padding: 0 18px; height: 64px;
       line-height: 64px; font-size: 12px; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(255,255,255,0.75); text-decoration: none;
+      color: rgba(255,255,255,0.9); text-decoration: none;
       border-bottom: 3px solid transparent;
       transition: all 0.2s;
     }
@@ -121,13 +123,13 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--yellow); }
 
-    /* Mobile Dropdown Menu Menu */
+    /* Mobile Dropdown Menu */
     .mobile-menu {
       position: absolute; top: 64px; left: 0; width: 100%;
-      background: var(--navy-dark);
+      background: var(--skyblue-dark);
       max-height: 0; overflow: hidden;
       display: flex; flex-direction: column;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       transition: max-height 0.3s ease-in-out;
       z-index: 101;
     }
@@ -135,17 +137,17 @@
     .mobile-menu a {
       padding: 15px 2rem; font-size: 13px; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(255,255,255,0.85); text-decoration: none;
+      color: rgba(255,255,255,0.9); text-decoration: none;
       border-left: 4px solid transparent; transition: all 0.2s;
     }
     .mobile-menu a:hover, .mobile-menu a.active {
-      color: var(--yellow); background: rgba(255,255,255,0.03);
+      color: var(--yellow); background: rgba(255,255,255,0.1);
       border-left-color: var(--yellow);
     }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #001a50 100%);
+      background: linear-gradient(135deg, var(--skyblue-dark) 0%, var(--skyblue) 50%, #4CD0FF 100%);
       position: relative; overflow: hidden;
       padding: 5rem 1.5rem;
       text-align: center;
@@ -154,11 +156,11 @@
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,193,0,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(0,50,150,0.4) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,193,0,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(255,255,255,0.2) 0%, transparent 60%);
     }
     .hero-dots {
-      position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.12;
       background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
       background-size: 30px 30px;
     }
@@ -176,30 +178,30 @@
     }
     .hero-title em { font-style: normal; color: var(--yellow); }
     .hero-sub {
-      font-size: 15px; color: rgba(255,255,255,0.7);
+      font-size: 15px; color: rgba(255,255,255,0.95);
       line-height: 1.7; margin-bottom: 2.5rem; font-weight: 400;
     }
     .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
-      background: var(--yellow); color: var(--navy-dark);
+      background: var(--yellow); color: var(--dark-text);
       padding: 13px 32px; border-radius: 3px;
       font-size: 12px; font-weight: 900; letter-spacing: 2px;
       text-transform: uppercase; text-decoration: none;
       border: 2px solid var(--yellow); transition: all 0.2s;
     }
-    .btn-primary:hover { background: var(--yellow-lt); }
+    .btn-primary:hover { background: var(--yellow-lt); border-color: var(--yellow-lt); }
     .btn-outline {
       background: transparent; color: var(--white);
       padding: 13px 32px; border-radius: 3px;
       font-size: 12px; font-weight: 700; letter-spacing: 2px;
       text-transform: uppercase; text-decoration: none;
-      border: 2px solid rgba(255,255,255,0.3); transition: all 0.2s;
+      border: 2px solid rgba(255,255,255,0.6); transition: all 0.2s;
     }
-    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(255,255,255,0.1); }
 
     /* ── STATS BAR ── */
     .stats-bar {
-      background: var(--navy);
+      background: var(--skyblue-dark);
       padding: 2rem 1.5rem;
       border-bottom: 3px solid var(--yellow);
     }
@@ -217,7 +219,7 @@
     }
     .stat-label {
       font-size: 10px; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; color: rgba(255,255,255,0.8);
     }
 
     /* ── SECTION LAYOUT ── */
@@ -227,12 +229,12 @@
     .section-eyebrow {
       display: inline-block; font-size: 10px; font-weight: 800;
       letter-spacing: 4px; text-transform: uppercase;
-      color: var(--yellow-dk); margin-bottom: 10px;
+      color: var(--skyblue-dark); margin-bottom: 10px;
     }
     .section-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(24px, 4vw, 36px); font-weight: 900;
-      color: var(--navy); line-height: 1.2;
+      color: var(--skyblue-dark); line-height: 1.2;
     }
     .section-underline {
       width: 50px; height: 3px; background: var(--yellow);
@@ -240,9 +242,8 @@
     }
 
     /* ── SERVICES CONFIGURATION ── */
-    .section--light { background: var(--off-white); }
+    .section--light { background: var(--skyblue-light); }
     .section--white { background: #ffffff; }
-    .section--navy { background: var(--navy); }
 
     .tabs-nav {
       display: flex; justify-content: center;
@@ -258,7 +259,7 @@
     }
     .tab-btn:hover { background: rgba(245,193,0,0.1); }
     .tab-btn.active {
-      background: var(--yellow); color: var(--navy-dark);
+      background: var(--yellow); color: var(--dark-text);
       border-color: var(--yellow); font-weight: 900;
     }
     .tab-panel { display: none; }
@@ -266,60 +267,60 @@
     @keyframes reveal { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 
     .services-tabs-wrap {
-      background: var(--navy);
+      background: var(--skyblue-dark);
       border-radius: 6px; padding: 2.5rem;
     }
-    .services-tabs-wrap .tab-btn { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.15); }
-    .services-tabs-wrap .tab-btn:hover { color: var(--yellow); background: rgba(245,193,0,0.08); }
-    .services-tabs-wrap .tab-btn.active { background: var(--yellow); color: var(--navy-dark); border-color: var(--yellow); }
-    .services-tabs-wrap .panel-sub { color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; font-size: 13px; }
+    .services-tabs-wrap .tab-btn { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.2); }
+    .services-tabs-wrap .tab-btn:hover { color: var(--yellow); background: rgba(255,255,255,0.1); }
+    .services-tabs-wrap .tab-btn.active { background: var(--yellow); color: var(--dark-text); border-color: var(--yellow); }
+    .services-tabs-wrap .panel-sub { color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; font-size: 13px; }
 
     .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
     .cat-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
       border-radius: 4px; overflow: hidden;
       cursor: pointer; transition: all 0.2s;
     }
-    .cat-card:hover { border-color: rgba(245,193,0,0.4); background: rgba(255,255,255,0.07); }
-    .cat-card.open { border-color: var(--yellow); box-shadow: 0 0 16px rgba(245,193,0,0.1); background: rgba(255,255,255,0.06); }
+    .cat-card:hover { border-color: rgba(245,193,0,0.5); background: rgba(255,255,255,0.15); }
+    .cat-card.open { border-color: var(--yellow); box-shadow: 0 0 16px rgba(245,193,0,0.15); background: rgba(255,255,255,0.18); }
     .cat-header { display: flex; align-items: center; gap: 12px; padding: 15px 16px; }
     .cat-icon {
       font-size: 18px; width: 36px; height: 36px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(245,193,0,0.1); border-radius: 4px;
-      border: 1px solid rgba(245,193,0,0.2); flex-shrink: 0;
+      background: rgba(245,193,0,0.15); border-radius: 4px;
+      border: 1px solid rgba(245,193,0,0.25); flex-shrink: 0;
     }
     .cat-name { font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--white); flex: 1; }
     .cat-chevron { font-size: 10px; color: var(--yellow); transition: transform 0.25s; }
     .cat-card.open .cat-chevron { transform: rotate(180deg); }
     
-    .cat-items { display: none; padding: 0 16px 14px; border-top: 1px solid rgba(255,255,255,0.06); flex-direction: column; gap: 6px; }
+    .cat-items { display: none; padding: 0 16px 14px; border-top: 1px solid rgba(255,255,255,0.1); flex-direction: column; gap: 6px; }
     .cat-card.open .cat-items { display: flex; }
-    .cat-item { font-size: 13px; color: rgba(255,255,255,0.75); padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.4; }
+    .cat-item { font-size: 13px; color: rgba(255,255,255,0.95); padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.4; }
     .cat-item:last-child { border-bottom: none; }
     .cat-item::before { content: '◈'; color: var(--yellow); font-size: 9px; flex-shrink: 0; margin-top: 3px; }
-    .cat-item-note { color: rgba(255,255,255,0.38); font-size: 11px; display: block; margin-top: 2px; }
+    .cat-item-note { color: rgba(255,255,255,0.6); font-size: 11px; display: block; margin-top: 2px; }
 
     /* ── WHY CHOOSE US ── */
     .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem; }
     .why-card { text-align: center; padding: 1.5rem 1rem; }
     .why-icon {
       width: 64px; height: 64px; border-radius: 50%;
-      background: transparent; border: 2px solid var(--yellow);
+      background: transparent; border: 2px solid var(--skyblue);
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1rem; font-size: 24px;
+      margin: 0 auto 1rem; font-size: 24px; color: var(--skyblue-dark);
       transition: all 0.2s;
     }
-    .why-card:hover .why-icon { background: var(--yellow); color: var(--navy-dark); }
-    .why-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 8px; color: var(--navy); letter-spacing: 0.5px; }
+    .why-card:hover .why-icon { background: var(--skyblue); color: var(--white); border-color: var(--skyblue); }
+    .why-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 8px; color: var(--skyblue-dark); letter-spacing: 0.5px; }
     .why-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
 
     /* ── ABOUT SECTION ── */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
     .about-badge {
-      display: inline-block; background: var(--yellow); color: var(--navy-dark);
+      display: inline-block; background: var(--yellow); color: var(--dark-text);
       font-size: 10px; font-weight: 900; letter-spacing: 3px;
       text-transform: uppercase; padding: 5px 14px; border-radius: 2px;
       margin-bottom: 1.2rem;
@@ -327,24 +328,26 @@
     .about-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(24px, 4vw, 36px); font-weight: 900;
-      color: var(--navy); line-height: 1.2; margin-bottom: 1.2rem;
+      color: var(--skyblue-dark); line-height: 1.2; margin-bottom: 1.2rem;
     }
-    .about-body { font-size: 14px; line-height: 1.9; color: #4a5568; margin-bottom: 1.5rem; }
+    .about-body { font-size: 14px; line-height: 1.9; color: #334155; margin-bottom: 1.5rem; }
     .about-tagline {
-      font-size: 15px; font-weight: 800; color: var(--navy);
+      font-size: 15px; font-weight: 800; color: var(--skyblue-dark);
       border-left: 4px solid var(--yellow); padding-left: 16px;
       line-height: 1.5; margin-bottom: 2rem;
     }
     .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .about-pillar {
-      background: var(--off-white); border: 1px solid #e2e8f0;
+      background: var(--white); border: 1px solid #e2e8f0;
       border-top: 3px solid var(--yellow); border-radius: 3px;
       padding: 14px; text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
     .about-pillar .p-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-    .about-pillar .p-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; color: var(--navy); }
+    .about-pillar .p-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; color: var(--skyblue-dark); }
+    
     .about-right {
-      background: var(--navy); border-radius: 6px;
+      background: var(--skyblue-dark); border-radius: 6px;
       padding: 2.5rem 2rem;
     }
     .about-right h3 {
@@ -354,32 +357,521 @@
     .about-point {
       display: flex; gap: 14px; align-items: flex-start;
       margin-bottom: 1.2rem; padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .about-point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .about-point-icon {
-      width: 36px; height: 36px; background: rgba(245,193,0,0.15);
-      border: 1px solid rgba(245,193,0,0.3); border-radius: 4px;
+      width: 36px; height: 36px; background: rgba(245,193,0,0.2);
+      border: 1px solid rgba(245,193,0,0.35); border-radius: 4px;
       display: flex; align-items: center; justify-content: center;
       font-size: 16px; flex-shrink: 0;
     }
     .about-point-text h5 { font-size: 13px; font-weight: 800; color: var(--white); margin-bottom: 3px; }
-    .about-point-text p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .about-point-text p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.5; }
 
     /* ── CONTACT SECTION ── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
     @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
     .contact-section-label {
       font-size: 10px; font-weight: 800; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--yellow-dk);
+      text-transform: uppercase; color: var(--skyblue-dark);
       margin: 1.4rem 0 8px;
     }
     .contact-section-label:first-of-type { margin-top: 0; }
     .contact-cards { display: flex; flex-direction: column; gap: 10px; }
     .contact-card {
       display: flex; align-items: center; gap: 14px;
-      background: var(--off-white); border: 1px solid #e2e8f0;
+      background: var(--white); border: 1px solid #e2e8f0;
       border-radius: 4px; padding: 13px 16px;
-      text-decoration: none; color: var(--navy);
+      text-decoration: none; color: var(--dark-text);
       font-size: 13px; font-weight: 600;
-      transition: all 0.2s; border-left
+      transition: all 0.2s; border-left: 3px solid var(--yellow);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .contact-card:hover { background: var(--skyblue-light); border-left-color: var(--skyblue-dark); }
+    .cc-icon { font-size: 20px; flex-shrink: 0; }
+    .cc-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--skyblue-dark); font-weight: 700; display: block; margin-top: 2px; }
+    
+    .contact-right { background: var(--skyblue-dark); border-radius: 6px; padding: 2rem; }
+    .contact-right h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--white); margin-bottom: 6px; }
+    .contact-right p { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+    
+    .wa-btn {
+      display: flex; align-items: center; gap: 10px;
+      background: #128C7E; border-radius: 4px; padding: 13px 20px;
+      color: white; font-size: 12px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      text-decoration: none; margin-bottom: 12px; transition: opacity 0.2s;
+    }
+    .wa-btn:hover { opacity: 0.88; }
+    .social-links { display: flex; gap: 10px; margin-top: 1.2rem; }
+    .social-link {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px; padding: 10px 14px;
+      color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 700;
+      text-decoration: none; transition: all 0.2s; flex: 1; justify-content: center;
+    }
+    .social-link:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── FOOTER ── */
+    footer { background: #004C6D; padding: 3rem 1.5rem 0; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+    @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+    .footer-logo-circle { width: 40px; height: 40px; background: white; border-radius: 50%; padding: 5px; border: 2px solid var(--yellow); display: flex; align-items: center; justify-content: center; }
+    .footer-logo-circle img { width: 100%; object-fit: contain; }
+    .footer-logo-text { font-size: 13px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+    .footer-logo-text span { color: var(--yellow); }
+    .footer-desc { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 1.2rem; }
+    .footer-socials { display: flex; gap: 8px; }
+    .footer-socials a {
+      width: 32px; height: 32px; border-radius: 3px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.8); font-size: 14px; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .footer-socials a:hover { background: var(--yellow); color: var(--dark-text); border-color: var(--yellow); }
+    .footer-col {
+      primary-color: var(--skyblue);
+      font-size: 12px; font-weight: 900; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--white);
+      margin-bottom: 1.2rem; padding-bottom: 8px;
+      border-bottom: 2px solid var(--yellow);
+      display: inline-block;
+    }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 900; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--white);
+      margin-bottom: 1.2rem; padding-bottom: 8px;
+      border-bottom: 2px solid var(--yellow);
+      display: inline-block;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a {
+      font-size: 12px; color: rgba(255,255,255,0.8);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .footer-col ul li a::before { content: '›'; color: var(--yellow); }
+    .footer-col ul li a:hover { color: var(--yellow); }
+    .footer-col p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.8; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1.2rem 0; text-align: center;
+    }
+    .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
+
+    /* ── RESPONSIVENESS ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .topbar-left { display: none; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <div class="topbar-item"><span>📍</span> Ota, Ogun State, Nigeria</div>
+      <div class="topbar-item"><span>✉</span> cywisbusinesssolutions@gmail.com</div>
+      <div class="topbar-item"><span>📞</span> +234 802 110 4657</div>
+    </div>
+    <div class="topbar-socials">
+      <a href="https://facebook.com/cywisbusinesssolutions" target="_blank">Facebook</a>
+      <a href="https://instagram.com/cywisbusinesssolutions" target="_blank">Instagram</a>
+      <a href="https://wa.me/2348021104657" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-img"><img src="logo.png" alt="CBS Logo"></div>
+      <div class="nav-logo-text">Cywis <span>Business</span></div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobile-dropdown">
+      <a href="#home" class="active" onclick="toggleMobileMenu()">Home</a>
+      <a href="#services" onclick="toggleMobileMenu()">Services</a>
+      <a href="#about" onclick="toggleMobileMenu()">About</a>
+      <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Welcome to CBS</span>
+    <h1 class="hero-title">Your One-Stop Shop for <em>Tech, Media &amp; Engineering</em></h1>
+    <p class="hero-sub">Cywis Business Solutions delivers premium design, printing, technology services and more — helping individuals and businesses grow with confidence.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Service Categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Services Offered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Quality Assured</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Always Available</div>
+    </div>
+  </div>
+</div>
+
+<section class="section section--light" id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">What We Do</span>
+      <h2 class="section-title">Our Services</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div class="services-tabs-wrap">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event,'services-panel')">All Services</button>
+      </div>
+      <p class="panel-sub">Select a category to explore what we offer</p>
+      <div class="tab-panel active" id="tab-services-panel">
+        <div class="cat-grid">
+
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <span class="cat-icon">🎨</span>
+              <span class="cat-name">Design &amp; Branding</span>
+              <span class="cat-chevron">▼</span>
+            </div>
+            <div class="cat-items">
+              <div class="cat-item">Graphic Design</div>
+              <div class="cat-item">Branding</div>
+            </div>
+          </div>
+
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <span class="cat-icon">🖨️</span>
+              <span class="cat-name">Printing Services</span>
+              <span class="cat-chevron">▼</span>
+            </div>
+            <div class="cat-items">
+              <div class="cat-item">General Printing</div>
+              <div class="cat-item">Large Format Printing<span class="cat-item-note">Flex, Banners, Stickers, etc.</span></div>
+              <div class="cat-item">Print &amp; Copy</div>
+            </div>
+          </div>
+
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <span class="cat-icon">💻</span>
+              <span class="cat-name">Technology Services</span>
+              <span class="cat-chevron">▼</span>
+            </div>
+            <div class="cat-items">
+              <div class="cat-item">ICT Vocational Training</div>
+              <div class="cat-item">Phone &amp; Laptop Repairs</div>
+              <div class="cat-item">Phone Swapping</div>
+            </div>
+          </div>
+
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <span class="cat-icon">🛒</span>
+              <span class="cat-name">Sales</span>
+              <span class="cat-chevron">▼</span>
+            </div>
+            <div class="cat-items">
+              <div class="cat-item">Gadgets &amp; Accessories</div>
+              <div class="cat-item">Stationery</div>
+            </div>
+          </div>
+
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <span class="cat-icon">⚙️</span>
+              <span class="cat-name">Other Services</span>
+              <span class="cat-chevron">▼</span>
+            </div>
+            <div class="cat-items">
+              <div class="cat-item">Online Registration</div>
+              <div class="cat-item">CAC Registration</div>
+              <div class="cat-item">Passport Photograph</div>
+              <div class="cat-item">Binding &amp; Lamination</div>
+              <div class="cat-item">Scanning</div>
+              <div class="cat-item">Wall Frames &amp; Display</div>
+              <div class="cat-item">Signs &amp; Exhibitions</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Why CBS</span>
+      <h2 class="section-title">Why Choose Us</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h4>Customised</h4>
+        <p>Every solution is tailored to your specific needs and goals.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <h4>Premium Quality</h4>
+        <p>We deliver excellence in every product and service we provide.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h4>Affordable</h4>
+        <p>Professional-grade services at prices that work for every budget.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h4>Always Available</h4>
+        <p>We are here when you need us — anytime, any day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-badge">Company Profile</div>
+        <h2 class="about-title">About Cywis Business Solutions</h2>
+        <p class="about-body">Cywis Business Solutions provides smart technology, branding, and business solutions. From design, printing, and training to gadget sales, device repairs and phone swaps, we deliver quality services that help individuals and businesses grow with confidence.</p>
+        <div class="about-tagline">CBS — Your One-Stop Shop for Tech, Media &amp; Engineering.</div>
+        <div class="about-pillars">
+          <div class="about-pillar"><span class="p-icon">🎯</span><span class="p-label">Customised</span></div>
+          <div class="about-pillar"><span class="p-icon">🏆</span><span class="p-label">Premium Quality</span></div>
+          <div class="about-pillar"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
+          <div class="about-pillar"><span class="p-icon">⚡</span><span class="p-label">Anytime</span></div>
+        </div>
+      </div>
+      <div class="about-right">
+        <h3>Our Commitment</h3>
+        <div class="about-point">
+          <div class="about-point-icon">🎨</div>
+          <div class="about-point-text">
+            <h5>Creative Excellence</h5>
+            <p>Distinctive designs and branding that make your business stand out.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">🖨️</div>
+          <div class="about-point-text">
+            <h5>Print On Demand</h5>
+            <p>Fast turnaround on all print jobs — from business cards to large format.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">💻</div>
+          <div class="about-point-text">
+            <h5>Tech Solutions</h5>
+            <p>Device repairs, swaps, sales and ICT training under one roof.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">📋</div>
+          <div class="about-point-text">
+            <h5>Business Support</h5>
+            <p>CAC registration, online portals, scanning and more for your business needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Get In Touch</span>
+      <h2 class="section-title">Contact Us</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="contact-section-label">Phone</div>
+        <div class="contact-cards">
+          <a class="contact-card" href="tel:+2348021104657">
+            <span class="cc-icon">📲</span>
+            <div>+234 802 110 4657<span class="cc-label">Tap to call</span></div>
+          </a>
+          <a class="contact-card" href="tel:+2348032080783">
+            <span class="cc-icon">📲</span>
+            <div>+234 803 2080 783<span class="cc-label">Tap to call</span></div>
+          </a>
+        </div>
+        <div class="contact-section-label">Email</div>
+        <div class="contact-cards">
+          <a class="contact-card" href="mailto:cywisbusinesssolutions@gmail.com">
+            <span class="cc-icon">✉️</span>
+            <div>cywisbusinesssolutions@gmail.com<span class="cc-label">Send an email</span></div>
+          </a>
+        </div>
+        <div class="contact-section-label">Social Media</div>
+        <div class="contact-cards">
+          <a class="contact-card" href="https://facebook.com/cywisbusinesssolutions" target="_blank">
+            <span class="cc-icon">📘</span>
+            <div>Cywis Business Solutions<span class="cc-label">Facebook</span></div>
+          </a>
+          <a class="contact-card" href="https://instagram.com/cywisbusinesssolutions" target="_blank">
+            <span class="cc-icon">📸</span>
+            <div>Cywis Business Solutions<span class="cc-label">Instagram</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <h3>Let's Talk</h3>
+        <p>Reach us directly on WhatsApp for the fastest response.</p>
+        <a class="wa-btn" href="https://wa.me/2348021104657" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.885a.5.5 0 0 0 .606.607l6.162-1.52A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.88 9.88 0 0 1-5.031-1.374l-.36-.214-3.733.921.959-3.638-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.467 0 9.9 4.434 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <div class="social-links">
+          <a class="social-link" href="https://facebook.com/cywisbusinesssolutions" target="_blank">📘 Facebook</a>
+          <a class="social-link" href="https://instagram.com/cywisbusinesssolutions" target="_blank">📸 Instagram</a>
+        </div>
+        <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.15);">
+          <p style="font-size:12px; color:rgba(255,255,255,0.8); line-height:1.8;">
+            📍 Ota, Ogun State, Nigeria<br>
+            🕐 Available anytime
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-row">
+        <div class="footer-logo-circle"><img src="logo.png" alt="CBS"></div>
+        <div class="footer-logo-text">Cywis <span>Business Solutions</span></div>
+      </div>
+      <p class="footer-desc">Empowering businesses through tech, creativity and precision. Your one-stop shop for design, printing, technology and more in Ota, Ogun State.</p>
+      <div class="footer-socials">
+        <a href="https://facebook.com/cywisbusinesssolutions" target="_blank">f</a>
+        <a href="https://instagram.com/cywisbusinesssolutions" target="_blank">ig</a>
+        <a href="https://wa.me/2348021104657" target="_blank">wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Design &amp; Branding</a></li>
+        <li><a href="#services">Printing Services</a></li>
+        <li><a href="#services">Technology Services</a></li>
+        <li><a href="#services">Sales</a></li>
+        <li><a href="#services">Other Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 +234 802 110 4657<br>📞 +234 803 2080 783<br>✉ cywisbusinesssolutions@gmail.com<br>📍 Ota, Ogun State, Nigeria</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Cywis Business Solutions · All rights reserved · Ota, Ogun State, Nigeria</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile Dropdown Control Function
+  function toggleMobileMenu() {
+    const hamburger = document.getElementById('hamburger-btn');
+    const menu = document.getElementById('mobile-dropdown');
+    hamburger.classList.toggle('open');
+    menu.classList.toggle('open');
+  }
+
+  // Categories Toggling Accordion Function
+  function toggleCat(card) {
+    const isOpen = card.classList.contains('open');
+    // Closes all other categories to avoid layout fragmentation
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
+    
+    // Toggle active state for current element
+    if (!isOpen) {
+      card.classList.add('open');
+    }
+  }
+
+  // Tabs Nav Function
+  function openTab(e, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  // Enhanced Anchor Smooth Scrolling Logic
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        
+        // Dynamic navigation offset compensation
+        const navOffset = 64; 
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Sync active link visual indications across both menu platforms
+        document.querySelectorAll('a[href^="#"]').forEach(link => link.classList.remove('active'));
+        document.querySelectorAll(`a[href="${targetId}"]`).forEach(link => link.classList.add('active'));
+      }
+    });
+  });
+</script>
+</body>
+</html>
