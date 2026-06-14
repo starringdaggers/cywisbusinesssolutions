@@ -15,10 +15,8 @@
       --electric-card: rgba(0, 20, 40, 0.65);
       --electric-deep: #010810;
       
-      /* Specific Befitting Accent Highlights for each Tab Area */
-      --color-about:   #00ffcc; /* Sleek Cyan for Identity */
-      --color-contact: #ffcc00; /* Warm Gold for Communication */
-      --color-services:#0099ff; /* Vivid Blue for Technical tracks */
+      /* Premium Unified Befitting Corporate Yellow/Gold Accent */
+      --befitting-yellow: #ffbf00;
       
       /* Structural System maintained exactly from your file */
       --border:        rgba(255,255,255,0.18);
@@ -195,13 +193,10 @@
       border-color: rgba(255,255,255,0.3);
     }
 
-    /* Premium dynamic active button underlines & text shifts */
-    .tab-btn[onclick*="about"].active { color: var(--color-about); }
-    .tab-btn[onclick*="contact"].active { color: var(--color-contact); }
-    .tab-btn[onclick*="services"].active { color: var(--color-services); }
-
+    /* Active Tab Glow & Text Color Changes to Gold/Yellow */
     .tab-btn.active {
       background: var(--electric-panel);
+      color: var(--befitting-yellow);
       border-color: rgba(255,255,255,0.28);
       border-bottom-color: var(--electric-panel);
       font-weight: 900;
@@ -213,17 +208,9 @@
       background: var(--electric-panel);
     }
 
-    .tab-btn[onclick*="about"].active::before {
+    .tab-btn.active::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-about), transparent);
-    }
-    .tab-btn[onclick*="contact"].active::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-contact), transparent);
-    }
-    .tab-btn[onclick*="services"].active::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-services), transparent);
+      background: linear-gradient(90deg, transparent, var(--befitting-yellow), transparent);
     }
 
     /* ── TABS BODY ── */
@@ -249,15 +236,11 @@
     .panel-heading {
       font-size: clamp(18px, 4vw, 26px);
       font-weight: 900;
-      color: var(--white);
+      color: var(--befitting-yellow);
       letter-spacing: 1px;
       margin-bottom: 5px;
       text-transform: uppercase;
     }
-    
-    #tab-about .panel-heading { color: var(--color-about); }
-    #tab-contact .panel-heading { color: var(--color-contact); }
-    #tab-services .panel-heading { color: var(--color-services); }
 
     .panel-sub {
       font-size: 13px;
@@ -337,7 +320,7 @@
 
     .cat-item::before {
       content: '◈';
-      color: var(--color-services);
+      color: var(--befitting-yellow);
       font-size: 9px;
       flex-shrink: 0;
       margin-top: 3px;
@@ -421,7 +404,7 @@
     .cbs-tagline {
       font-size: clamp(14px, 3vw, 17px);
       color: var(--white);
-      border-left: 3px solid var(--color-about);
+      border-left: 3px solid var(--befitting-yellow);
       padding-left: 18px;
       line-height: 1.6;
       margin-top: 1.5rem;
@@ -445,7 +428,7 @@
       text-align: center;
       transition: border-color 0.2s, background 0.2s;
     }
-    .pillar:hover { border-top-color: var(--color-about); background: rgba(0, 34, 68, 0.55); }
+    .pillar:hover { border-top-color: var(--befitting-yellow); background: rgba(0, 34, 68, 0.55); }
     .pillar .p-icon { font-size: 22px; display: block; margin-bottom: 6px; }
     .pillar .p-label {
       font-size: 10px;
@@ -638,4 +621,53 @@
             <span class="cat-chevron">▼</span>
           </div>
           <div class="cat-items">
-            <div class="cat-item">
+            <div class="cat-item">Gadgets &amp; Accessories</div>
+            <div class="cat-item">Stationery</div>
+          </div>
+        </div>
+
+        <div class="cat-card" onclick="toggleCat(this)">
+          <div class="cat-header">
+            <span class="cat-icon">⚙️</span>
+            <span class="cat-name">Other Services</span>
+            <span class="cat-chevron">▼</span>
+          </div>
+          <div class="cat-items">
+            <div class="cat-item">Online Registration</div>
+            <div class="cat-item">CAC Registration</div>
+            <div class="cat-item">Passport Photograph</div>
+            <div class="cat-item">Binding &amp; Lamination</div>
+            <div class="cat-item">Scanning</div>
+            <div class="cat-item">Wall Frames &amp; Display</div>
+            <div class="cat-item">Signs &amp; Exhibitions</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">Cywis Business Solutions</div>
+    <div class="footer-copy">&copy; 2026 · Ota, Ogun State, Nigeria · All rights reserved</div>
+  </footer>
+
+</div>
+
+<script>
+  function openTab(e, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  function toggleCat(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+</script>
+</body>
+</html>
