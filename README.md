@@ -1,2 +1,2 @@
 # cywisbusinesssolutions
-Tech, Media and Engineering
+Empowering Business Through Tech, Creativity & Precision.
