@@ -4,26 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cywis Business Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Replaced Navy variants with the vibrant Sky Blue palette directly from your image */
-      --navy:         #00A3E0;
-      --navy-mid:     #0086B8;
-      --navy-light:   #0077A8;
-      --navy-panel:   rgba(0, 163, 224, 0.75);
-      --navy-card:    rgba(0, 134, 184, 0.8);
-      
-      /* Kept all other design variables completely untouched */
-      --yellow:       #F5C100;
-      --yellow-light: #FFD740;
-      --yellow-dark:  #C9A000;
-      --yellow-glow:  rgba(245,193,0,0.25);
-      --border:       rgba(255,255,255,0.12);
-      --border-y:     rgba(245,193,0,0.4);
-      --white:        #ffffff;
-      --white-dim:    rgba(255,255,255,0.68);
-      --white-dimmer: rgba(255,255,255,0.4);
+      --navy:       #0B2D8F;
+      --navy-dark:  #081f6b;
+      --navy-mid:   #0d3aab;
+      --yellow:     #F5C518;
+      --yellow-lt:  #FFD740;
+      --yellow-dk:  #C9A000;
+      --white:      #ffffff;
+      --off-white:  #f4f6fa;
+      --gray:       #8a95a8;
+      --border:     rgba(255,255,255,0.1);
+      --border-y:   rgba(245,193,0,0.35);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,423 +25,583 @@
 
     body {
       font-family: 'Raleway', sans-serif;
-      background: #001029;
-      color: var(--white);
+      background: var(--off-white);
+      color: #1a1a2e;
       overflow-x: hidden;
     }
 
-    .app-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: var(--navy);
-      box-shadow: 0 0 50px rgba(0,0,0,0.8);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    /* ── TOP BAR ── */
+    .topbar { background: var(--navy-dark); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .topbar-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
     }
+    .topbar-left { display: flex; gap: 24px; flex-wrap: wrap; }
+    .topbar-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
+    .topbar-item span { color: var(--yellow); font-size: 13px; }
+    .topbar-socials { display: flex; gap: 10px; }
+    .topbar-socials a { color: rgba(255,255,255,0.45); font-size: 12px; text-decoration: none; transition: color 0.2s; font-weight: 700; }
+    .topbar-socials a:hover { color: var(--yellow); }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2.5rem;
-      background: rgba(0,0,0,0.15);
-      border-bottom: 1px solid var(--border);
+    /* ── NAV ── */
+    nav { background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
     }
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-img { width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 5px; border: 2px solid var(--yellow); }
+    .nav-logo-img img { width: 100%; height: 100%; object-fit: contain; }
+    .nav-logo-text { font-family: 'Raleway', sans-serif; font-size: 15px; font-weight: 900; color: var(--white); letter-spacing: 3px; }
+    .nav-logo-text span { color: var(--yellow); }
+    .nav-links { display: flex; }
+    .nav-links a {
+      display: block; padding: 0 18px; height: 64px; line-height: 64px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      border-bottom: 3px solid transparent; transition: all 0.2s;
     }
-    .logo span { font-weight: 300; color: var(--white-dim); }
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-left: 2rem;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-    }
-    nav a:hover, nav a.active {
-      border-color: var(--yellow);
-      color: var(--yellow);
-    }
+    .nav-links a:hover, .nav-links a.active { color: var(--yellow); border-bottom-color: var(--yellow); }
 
-    .hero-section {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      min-height: 480px;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-text {
-      background: var(--navy-panel);
-      padding: 4rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .welcome-badge {
-      align-self: flex-start;
-      font-size: 0.65rem;
-      font-weight: 900;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      background: var(--yellow-glow);
-      border: 1px solid var(--border-y);
-      color: var(--yellow);
-      padding: 6px 14px;
-      border-radius: 2px;
-      margin-bottom: 1.5rem;
-    }
-    .hero-text h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-    .hero-text p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--white-dim);
-      margin-bottom: 2rem;
-    }
-    .cta-group { display: flex; gap: 1rem; }
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      font-size: 0.75rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.2s;
-    }
-    .btn-yellow { background: var(--yellow); color: #000; }
-    .btn-yellow:hover { background: var(--yellow-light); transform: translateY(-1px); }
-    .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
-    .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--white); transform: translateY(-1px); }
-
-    .hero-image {
-      background: url('hero-bg.jpg') center center / cover no-repeat;
-      position: relative;
-    }
-    .hero-image::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--navy-panel), transparent 30%);
-    }
-
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .services-container {
-      padding: 3.5rem 2.5rem;
-      border-right: 1px solid var(--border);
-    }
-    .section-title {
-      font-size: 0.7rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 2rem;
-    }
-    .tabs-nav {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .tab-btn {
-      font-family: 'Raleway', sans-serif;
-      background: rgba(0,0,0,0.2);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 0.7rem 1.2rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .tab-btn:hover { background: rgba(255,255,255,0.05); }
-    .tab-btn.active {
-      background: var(--yellow);
-      color: #000;
-      border-color: var(--yellow);
-      font-weight: 900;
-    }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    .cat-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .cat-card {
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .cat-card:hover { border-color: rgba(255,255,255,0.2); }
-    .cat-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.2rem;
-    }
-    .cat-title-flex { display: flex; align-items: center; gap: 10px; }
-    .cat-icon { font-size: 1.1rem; }
-    .cat-name { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
-    .cat-chevron { font-size: 0.65rem; color: var(--white-dimmer); transition: transform 0.2s; }
-    .cat-card.open .cat-chevron { transform: rotate(180deg); }
-
-    .cat-content {
-      display: none;
-      padding: 0 1.2rem 1.2rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      background: rgba(0,0,0,0.1);
-    }
-    .cat-card.open .cat-content { display: block; }
-    .service-item {
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      font-size: 0.85rem;
-      color: var(--white-dim);
-    }
-    .service-item:last-child { border-bottom: none; }
-
-    .about-container {
-      padding: 3.5rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      background: rgba(0,0,0,0.08);
-    }
-    .about-text {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--white-dim);
-      margin-bottom: 1.5rem;
-    }
-    .cbs-tagline {
-      font-size: 1rem;
-      font-weight: 800;
-      line-height: 1.4;
-      border-left: 2px solid var(--yellow);
-      padding-left: 0.8rem;
-      margin-bottom: 2.5rem;
-    }
-    .pillars {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
-    .pillar {
-      background: rgba(0,0,0,0.15);
-      border: 1px solid var(--border);
-      padding: 1.2rem 0.8rem;
+    /* ── HERO — old-site centered style with office.jpg bg ── */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 5rem 1.5rem 4rem;
       text-align: center;
-      border-radius: 2px;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
     }
-    .p-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
-    .p-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('office.jpg');
+      background-size: cover; background-position: center top;
+      filter: brightness(0.18) saturate(0.5);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(11,45,143,0.88) 0%, rgba(8,31,107,0.82) 100%);
+    }
+    .hero-dots {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.05;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 
-    footer {
-      padding: 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.2);
-      margin-top: auto;
-    }
-    .footer-logo { font-size: 1rem; font-weight: 900; letter-spacing: 0.5px; }
-    .footer-copy { font-size: 0.75rem; color: var(--white-dimmer); }
+    /* logo circle */
+    .hero-logo-wrap { width: 110px; height: 110px; border-radius: 50%; background: white; border: 4px solid var(--yellow); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; padding: 10px; }
+    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
 
-    @media (max-width: 850px) {
-      .hero-section, .main-grid { grid-template-columns: 1fr; }
-      .hero-image { min-height: 250px; }
-      .services-container { border-right: none; border-bottom: 1px solid var(--border); }
+    /* big title */
+    .hero-title { font-family: 'Raleway', sans-serif; font-size: clamp(28px, 6vw, 58px); font-weight: 900; color: var(--white); letter-spacing: 3px; line-height: 1.1; margin-bottom: 1rem; }
+
+    /* TECH · MEDIA · ENGINEERING */
+    .hero-sub-line { font-size: clamp(11px, 2vw, 14px); font-weight: 600; letter-spacing: 6px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+
+    /* yellow dot divider */
+    .hero-divider { display: flex; align-items: center; gap: 0; margin-bottom: 2rem; width: 260px; }
+    .hero-divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.2); }
+    .hero-divider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; margin: 0 4px; }
+
+    /* welcome card */
+    .hero-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(245,197,24,0.3); border-top: 3px solid var(--yellow); border-radius: 4px; padding: 2rem 2.5rem; max-width: 760px; margin-bottom: 2.5rem; text-align: left; }
+    .hero-card p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.8; font-weight: 400; }
+
+    /* nav buttons */
+    .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--yellow); color: var(--navy-dark); padding: 13px 36px; border-radius: 3px; font-size: 12px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 2px solid var(--yellow); transition: all 0.2s; }
+    .btn-primary:hover { background: var(--yellow-lt); }
+    .btn-outline { background: transparent; color: var(--white); padding: 13px 36px; border-radius: 3px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); transition: all 0.2s; }
+    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: var(--navy); padding: 2rem 1.5rem; border-bottom: 3px solid var(--yellow); }
+    .stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; text-align: center; }
+    .stat-item { padding: 0.5rem; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--yellow); line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+    /* ── PRINT SHOWCASE SECTION ── */
+    .print-showcase {
+      position: relative; overflow: hidden;
+      padding: 5rem 1.5rem;
     }
+    .print-bg {
+      position: absolute; inset: 0;
+      background-image: url('prints.jpg');
+      background-size: cover; background-position: center;
+      filter: brightness(0.15) saturate(0.5);
+    }
+    .print-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(0,20,51,0.96) 0%, rgba(0,10,30,0.88) 100%);
+    }
+    .print-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+    .print-header { text-align: center; margin-bottom: 3rem; }
+    .print-eyebrow { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+    .print-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: var(--white); line-height: 1.2; }
+    .print-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 8px; }
+    .print-underline { width: 50px; height: 3px; background: var(--yellow); margin: 14px auto 0; border-radius: 2px; }
+
+    /* print items grid */
+    .print-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .print-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,193,0,0.2);
+      border-radius: 8px; padding: 1.2rem 1rem;
+      text-align: center; transition: all 0.2s;
+    }
+    .print-item:hover { background: rgba(245,193,0,0.1); border-color: var(--yellow); transform: translateY(-3px); }
+    .print-item .pi-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+    .print-item .pi-name { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; }
+    .print-item .pi-badge { display: inline-block; background: var(--yellow); color: var(--navy-dark); font-size: 9px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+
+    /* ── SECTION LAYOUT ── */
+    .section { padding: 5rem 1.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--yellow-dk); margin-bottom: 10px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: var(--navy); line-height: 1.2; }
+    .section-underline { width: 50px; height: 3px; background: var(--yellow); margin: 14px auto 0; border-radius: 2px; }
+    .section--light { background: var(--off-white); }
+    .section--white { background: #ffffff; }
+    .section--navy { background: var(--navy); }
+
+    /* ── SERVICES ── */
+    .services-tabs-wrap { background: var(--navy); border-radius: 6px; padding: 2.5rem; }
+    .tabs-nav { display: flex; justify-content: center; gap: 8px; margin-bottom: 2rem; flex-wrap: wrap; }
+    .tab-btn { font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 11px 24px; border: 2px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.6); border-radius: 3px; cursor: pointer; transition: all 0.2s; }
+    .tab-btn:hover { color: var(--yellow); background: rgba(245,193,0,0.08); }
+    .tab-btn.active { background: var(--yellow); color: var(--navy-dark); border-color: var(--yellow); font-weight: 900; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: reveal 0.25s ease; }
+    @keyframes reveal { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+    .panel-sub { color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; font-size: 13px; }
+
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+    .cat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
+    .cat-card:hover { border-color: rgba(245,193,0,0.4); background: rgba(255,255,255,0.07); }
+    .cat-card.open { border-color: var(--yellow); box-shadow: 0 0 16px rgba(245,193,0,0.1); }
+    .cat-header { display: flex; align-items: center; gap: 12px; padding: 15px 16px; }
+    .cat-icon { font-size: 18px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(245,193,0,0.1); border-radius: 4px; border: 1px solid rgba(245,193,0,0.2); flex-shrink: 0; }
+    .cat-name { font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--white); flex: 1; }
+    .cat-chevron { font-size: 10px; color: var(--yellow); transition: transform 0.25s; }
+    .cat-card.open .cat-chevron { transform: rotate(180deg); }
+    .cat-items { display: none; padding: 0 16px 14px; border-top: 1px solid rgba(255,255,255,0.06); flex-direction: column; gap: 6px; }
+    .cat-card.open .cat-items { display: flex; }
+    .cat-item { font-size: 13px; color: rgba(255,255,255,0.75); padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.4; }
+    .cat-item:last-child { border-bottom: none; }
+    .cat-item::before { content: '◈'; color: var(--yellow); font-size: 9px; flex-shrink: 0; margin-top: 3px; }
+    .cat-item-note { color: rgba(255,255,255,0.38); font-size: 11px; display: block; margin-top: 2px; }
+
+    /* ── WHY CHOOSE US ── */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem; }
+    .why-card { text-align: center; padding: 1.5rem 1rem; }
+    .why-icon { width: 64px; height: 64px; border-radius: 50%; background: transparent; border: 2px solid var(--yellow); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 24px; transition: all 0.2s; }
+    .why-card:hover .why-icon { background: var(--yellow); }
+    .why-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 8px; color: var(--navy); letter-spacing: 0.5px; }
+    .why-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ── OFFICE PHOTO STRIP ── */
+    .office-strip {
+      position: relative; height: 340px; overflow: hidden;
+    }
+    .office-strip-bg {
+      position: absolute; inset: 0;
+      background-image: url('office.jpg');
+      background-size: cover; background-position: center 20%;
+      filter: brightness(0.35) saturate(0.5);
+    }
+    .office-strip-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(0,20,51,0.97) 0%, rgba(0,20,51,0.6) 50%, rgba(0,20,51,0.3) 100%);
+    }
+    .office-strip-content {
+      position: relative; z-index: 1; height: 100%;
+      display: flex; align-items: center;
+      max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+    }
+    .office-strip-text { max-width: 520px; }
+    .office-strip-text .badge { display: inline-block; background: var(--yellow); color: var(--navy-dark); font-size: 10px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; padding: 5px 14px; border-radius: 2px; margin-bottom: 1rem; }
+    .office-strip-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 34px); color: var(--white); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+    .office-strip-text p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .about-badge { display: inline-block; background: var(--yellow); color: var(--navy-dark); font-size: 10px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; padding: 5px 14px; border-radius: 2px; margin-bottom: 1.2rem; }
+    .about-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 900; color: var(--navy); line-height: 1.2; margin-bottom: 1.2rem; }
+    .about-body { font-size: 14px; line-height: 1.9; color: #4a5568; margin-bottom: 1.5rem; }
+    .about-tagline { font-size: 15px; font-weight: 800; color: var(--navy); border-left: 4px solid var(--yellow); padding-left: 16px; line-height: 1.5; margin-bottom: 2rem; }
+    .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .about-pillar { background: var(--off-white); border: 1px solid #e2e8f0; border-top: 3px solid var(--yellow); border-radius: 3px; padding: 14px; text-align: center; }
+    .about-pillar .p-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+    .about-pillar .p-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; color: var(--navy); }
+    .about-right { background: var(--navy); border-radius: 6px; padding: 2.5rem 2rem; }
+    .about-right h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); margin-bottom: 1.5rem; }
+    .about-point { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .about-point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .about-point-icon { width: 36px; height: 36px; background: rgba(245,193,0,0.15); border: 1px solid rgba(245,193,0,0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .about-point-text h5 { font-size: 13px; font-weight: 800; color: var(--white); margin-bottom: 3px; }
+    .about-point-text p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .contact-section-label { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--yellow-dk); margin: 1.4rem 0 8px; }
+    .contact-section-label:first-of-type { margin-top: 0; }
+    .contact-cards { display: flex; flex-direction: column; gap: 10px; }
+    .contact-card { display: flex; align-items: center; gap: 14px; background: var(--off-white); border: 1px solid #e2e8f0; border-radius: 4px; padding: 13px 16px; text-decoration: none; color: var(--navy); font-size: 13px; font-weight: 600; transition: all 0.2s; border-left: 3px solid var(--yellow); }
+    .contact-card:hover { background: #eef2ff; }
+    .cc-icon { font-size: 20px; flex-shrink: 0; }
+    .cc-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--yellow-dk); font-weight: 700; display: block; margin-top: 2px; }
+    .contact-right { background: var(--navy); border-radius: 6px; padding: 2rem; }
+    .contact-right h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--white); margin-bottom: 6px; }
+    .contact-right p { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
+    .wa-btn { display: flex; align-items: center; gap: 10px; background: #128C7E; border-radius: 4px; padding: 13px 20px; color: white; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; margin-bottom: 12px; transition: opacity 0.2s; }
+    .wa-btn:hover { opacity: 0.88; }
+    .social-links { display: flex; gap: 10px; margin-top: 1.2rem; }
+    .social-link { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 10px 14px; color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s; flex: 1; justify-content: center; }
+    .social-link:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy-dark); padding: 3rem 1.5rem 0; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+    @media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+    .footer-logo-circle { width: 40px; height: 40px; background: white; border-radius: 50%; padding: 5px; border: 2px solid var(--yellow); display: flex; align-items: center; justify-content: center; }
+    .footer-logo-circle img { width: 100%; object-fit: contain; }
+    .footer-logo-text { font-size: 13px; font-weight: 900; color: var(--white); letter-spacing: 1px; }
+    .footer-logo-text span { color: var(--yellow); }
+    .footer-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 1.2rem; }
+    .footer-socials { display: flex; gap: 8px; }
+    .footer-socials a { width: 32px; height: 32px; border-radius: 3px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .footer-socials a:hover { background: var(--yellow); color: var(--navy-dark); border-color: var(--yellow); }
+    .footer-col h4 { font-size: 12px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 1.2rem; padding-bottom: 8px; border-bottom: 2px solid var(--yellow); display: inline-block; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
+    .footer-col ul li a::before { content: '›'; color: var(--yellow); }
+    .footer-col ul li a:hover { color: var(--yellow); }
+    .footer-col p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.8; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 1.2rem 0; text-align: center; }
+    .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+
+    @media (max-width: 768px) { .nav-links { display: none; } .topbar-left { display: none; } .office-strip { height: auto; padding: 3rem 1.5rem; } }
   </style>
 </head>
 <body>
 
-<div class="app-container">
-
-  <header>
-    <div class="logo">Cywis <span>Business</span></div>
-    <nav>
-      <a href="#" class="active">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About Us</a>
-    </nav>
-  </header>
-
-  <div class="hero-section">
-    <div class="hero-text">
-      <div class="welcome-badge">Welcome to CBS</div>
-      <h1>Your One-Stop Shop for Tech, Media &amp; Engineering</h1>
-      <p>
-        Cywis Business Solutions delivers premium design, printing, technology services and more — helping individuals and businesses grow with confidence.
-      </p>
-      <div class="cta-group">
-        <a href="#services" class="btn btn-yellow">Our Services</a>
-        <a href="https://wa.me/2348021104657" target="_blank" class="btn btn-outline">WhatsApp Support</a>
-      </div>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <div class="topbar-item"><span>📍</span> Ota, Ogun State, Nigeria</div>
+      <div class="topbar-item"><span>✉</span> cywisbusinesssolutions@gmail.com</div>
+      <div class="topbar-item"><span>📞</span> +234 802 110 4657</div>
     </div>
-    <div class="hero-image"></div>
+    <div class="topbar-socials">
+      <a href="https://facebook.com/cywisbusinesssolutions" target="_blank">FB</a>
+      <a href="https://instagram.com/cywisbusinesssolutions" target="_blank">IG</a>
+      <a href="https://wa.me/2348021104657" target="_blank">WA</a>
+    </div>
   </div>
+</div>
 
-  <div class="main-grid">
-    
-    <div class="services-container" id="services">
-      <div class="section-title">Our Offered Services</div>
-      
-      <div class="tabs-nav">
-        <button class="tab-btn active" onclick="openTab(event, 'all')">All Offerings</button>
-      </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-img"><img src="logo.png" alt="CBS Logo"></div>
+      <div class="nav-logo-text">Cywis <span>Business Solutions</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-      <div class="tab-panel active" id="tab-all">
+<!-- HERO — old-site centered style, office.jpg as background -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="Cywis Business Solutions Logo">
+    </div>
+    <h1 class="hero-title">Cywis Business Solutions</h1>
+    <div class="hero-sub-line">Tech &nbsp;·&nbsp; Media &nbsp;·&nbsp; Engineering</div>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-dot"></div>
+      <div class="hero-divider-line"></div>
+    </div>
+    <div class="hero-card">
+      <p>Cywis Business Solutions delivers premium design, printing, technology services and more — helping individuals and businesses grow with confidence.</p>
+    </div>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary">Services</a>
+      <a href="#contact" class="btn-outline">Contact</a>
+      <a href="#about" class="btn-outline">About</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Service Categories</div></div>
+    <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Services Offered</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Quality Assured</div></div>
+    <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Always Available</div></div>
+  </div>
+</div>
+
+<!-- PRINT SHOWCASE — prints.jpg as background -->
+<section class="print-showcase" id="services">
+  <div class="print-bg"></div>
+  <div class="print-overlay"></div>
+  <div class="print-inner">
+    <div class="print-header">
+      <span class="print-eyebrow">Print On Demand</span>
+      <h2 class="print-title">Customised · Premium Quality · Affordable · Anytime</h2>
+      <p class="print-sub">We bring your brand to life on any surface</p>
+      <div class="print-underline"></div>
+    </div>
+    <div class="print-grid">
+      <div class="print-item"><span class="pi-icon">☕</span><div class="pi-name">Mug</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">🛍</span><div class="pi-name">Carrier Bag</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">🛍</span><div class="pi-name">Nylon Bag</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">💳</span><div class="pi-name">Business Card</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">🪪</span><div class="pi-name">Plastic ID Card</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">📓</span><div class="pi-name">Binded Notepad</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">🍶</span><div class="pi-name">Plastic Bottle</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">🧾</span><div class="pi-name">Invoice/Receipt</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">👕</span><div class="pi-name">T-Shirt</div><span class="pi-badge">Custom Print</span></div>
+      <div class="print-item"><span class="pi-icon">🪧</span><div class="pi-name">Rollup Stand</div><span class="pi-badge">Custom Print</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL SERVICES -->
+<section class="section section--light">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">All Services</span>
+      <h2 class="section-title">What We Offer</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div class="services-tabs-wrap">
+      <p class="panel-sub">Select a category to expand</p>
+      <div class="tab-panel active" id="tab-services-panel">
         <div class="cat-grid">
-
           <div class="cat-card" onclick="toggleCat(this)">
-            <div class="cat-header">
-              <div class="cat-title-flex">
-                <span class="cat-icon">🎨</span>
-                <span class="cat-name">Design &amp; Branding</span>
-              </div>
-              <span class="cat-chevron">▼</span>
-            </div>
-            <div class="cat-content">
-              <div class="service-item">Graphic Design</div>
-              <div class="service-item">Branding</div>
+            <div class="cat-header"><span class="cat-icon">🎨</span><span class="cat-name">Design &amp; Branding</span><span class="cat-chevron">▼</span></div>
+            <div class="cat-items"><div class="cat-item">Graphic Design</div><div class="cat-item">Branding</div></div>
+          </div>
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header"><span class="cat-icon">🖨️</span><span class="cat-name">Printing Services</span><span class="cat-chevron">▼</span></div>
+            <div class="cat-items">
+              <div class="cat-item">General Printing</div>
+              <div class="cat-item">Large Format Printing<span class="cat-item-note">Flex, Banners, Stickers, etc.</span></div>
+              <div class="cat-item">Print &amp; Copy</div>
+              <div class="cat-item">Logo Designs</div>
+              <div class="cat-item">Company Profile</div>
+              <div class="cat-item">Brochures</div>
+              <div class="cat-item">Newsletters</div>
+              <div class="cat-item">Annual Reports</div>
+              <div class="cat-item">Flyers</div>
+              <div class="cat-item">Calendars</div>
+              <div class="cat-item">Magazine</div>
+              <div class="cat-item">Billboards</div>
+              <div class="cat-item">Posters</div>
+              <div class="cat-item">Greeting Cards</div>
+              <div class="cat-item">Swing Tags</div>
+              <div class="cat-item">Business Cards</div>
+              <div class="cat-item">Catalogues</div>
+              <div class="cat-item">Wedding Invites</div>
+              <div class="cat-item">Note Pad</div>
+              <div class="cat-item">ID Cards</div>
+              <div class="cat-item">Photo Books</div>
+              <div class="cat-item">Souvenirs etc.</div>
             </div>
           </div>
-
           <div class="cat-card" onclick="toggleCat(this)">
-            <div class="cat-header">
-              <div class="cat-title-flex">
-                <span class="cat-icon">🖨️</span>
-                <span class="cat-name">Printing Services</span>
-              </div>
-              <span class="cat-chevron">▼</span>
-            </div>
-            <div class="cat-content">
-              <div class="service-item">General Printing</div>
-              <div class="service-item">Large Format Printing (Flex, Banners, Stickers, etc.)</div>
-              <div class="service-item">Print &amp; Copy</div>
+            <div class="cat-header"><span class="cat-icon">💻</span><span class="cat-name">Technology Services</span><span class="cat-chevron">▼</span></div>
+            <div class="cat-items"><div class="cat-item">ICT Vocational Training</div><div class="cat-item">Phone &amp; Laptop Repairs</div><div class="cat-item">Phone Swapping</div></div>
+          </div>
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header"><span class="cat-icon">🛒</span><span class="cat-name">Sales</span><span class="cat-chevron">▼</span></div>
+            <div class="cat-items"><div class="cat-item">Gadgets &amp; Accessories</div><div class="cat-item">Stationery</div></div>
+          </div>
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header"><span class="cat-icon">⚙️</span><span class="cat-name">Other Services</span><span class="cat-chevron">▼</span></div>
+            <div class="cat-items">
+              <div class="cat-item">Online Registration</div><div class="cat-item">CAC Registration</div>
+              <div class="cat-item">Passport Photograph</div><div class="cat-item">Binding &amp; Lamination</div>
+              <div class="cat-item">Scanning</div><div class="cat-item">Wall Frames &amp; Display</div>
+              <div class="cat-item">Signs &amp; Exhibitions</div>
             </div>
           </div>
-
-          <div class="cat-card" onclick="toggleCat(this)">
-            <div class="cat-header">
-              <div class="cat-title-flex">
-                <span class="cat-icon">💻</span>
-                <span class="cat-name">Technology Services</span>
-              </div>
-              <span class="cat-chevron">▼</span>
-            </div>
-            <div class="cat-content">
-              <div class="service-item">ICT Vocational Training</div>
-              <div class="service-item">Phone &amp; Laptop Repairs</div>
-              <div class="service-item">Phone Swapping</div>
-            </div>
-          </div>
-
-          <div class="cat-card" onclick="toggleCat(this)">
-            <div class="cat-header">
-              <div class="cat-title-flex">
-                <span class="cat-icon">🛒</span>
-                <span class="cat-name">Sales</span>
-              </div>
-              <span class="cat-chevron">▼</span>
-            </div>
-            <div class="cat-content">
-              <div class="service-item">Gadgets &amp; Accessories</div>
-              <div class="service-item">Stationery</div>
-            </div>
-          </div>
-
-          <div class="cat-card" onclick="toggleCat(this)">
-            <div class="cat-header">
-              <div class="cat-title-flex">
-                <span class="cat-icon">⚙️</span>
-                <span class="cat-name">Other Services</span>
-              </div>
-              <span class="cat-chevron">▼</span>
-            </div>
-            <div class="cat-content">
-              <div class="service-item">Online Registration</div>
-              <div class="service-item">CAC Registration</div>
-              <div class="service-item">Passport Photograph</div>
-              <div class="service-item">Binding &amp; Lamination</div>
-              <div class="service-item">Scanning</div>
-              <div class="service-item">Wall Frames &amp; Display</div>
-              <div class="service-item">Signs &amp; Exhibitions</div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
-
-    <div class="about-container" id="about">
-      <div class="section-title">About Us</div>
-      <p class="about-text">
-        At Cywis Business Solutions, we turn ideas into brands, challenges into solutions, and technology into opportunities. From creative services to tech support and device solutions, we’re here to help you move forward with confidence.
-      </p>
-      <div class="cbs-tagline">
-        CBS — Your One-Stop Shop for Tech, Media &amp; Engineering.
-      </div>
-      <div class="pillars">
-        <div class="pillar"><span class="p-icon">🎯</span><span class="p-label">Customised</span></div>
-        <div class="pillar"><span class="p-icon">🏆</span><span class="p-label">Premium Quality</span></div>
-        <div class="pillar"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
-        <div class="pillar"><span class="p-icon">⚡</span><span class="p-label">Anytime</span></div>
-      </div>
-    </div>
-
   </div>
+</section>
 
-  <footer>
-    <div class="footer-logo">Cywis Business Solutions</div>
-    <div class="footer-copy">&copy; 2026 · Ota, Ogun State, Nigeria · All rights reserved</div>
-  </footer>
+<!-- WHY CHOOSE US -->
+<section class="section section--white">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Why CBS</span>
+      <h2 class="section-title">Why Choose Us</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🎯</div><h4>Customised</h4><p>Every solution tailored to your specific needs.</p></div>
+      <div class="why-card"><div class="why-icon">🏆</div><h4>Premium Quality</h4><p>Excellence in every product and service we deliver.</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h4>Affordable</h4><p>Professional-grade services at prices that work for you.</p></div>
+      <div class="why-card"><div class="why-icon">⚡</div><h4>Always Available</h4><p>We are here when you need us — anytime, any day.</p></div>
+    </div>
+  </div>
+</section>
 
+<!-- OFFICE PHOTO STRIP -->
+<div class="office-strip">
+  <div class="office-strip-bg"></div>
+  <div class="office-strip-overlay"></div>
+  <div class="office-strip-content">
+    <div class="office-strip-text">
+      <div class="badge">Our Workspace</div>
+      <h2>Where Creativity Meets Precision</h2>
+      <p>Our office in Ota, Ogun State is equipped with modern tools to serve you better — from design workstations to professional printing equipment, all under one roof.</p>
+    </div>
+  </div>
 </div>
 
-<script>
-  function openTab(e, id) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    e.currentTarget.classList.add('active');
-    document.getElementById('tab-' + id).classList.add('active');
-  }
+<!-- ABOUT -->
+<section class="section section--light" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-badge">Company Profile</div>
+        <h2 class="about-title">About Us</h2>
+        <p class="about-body">At Cywis Business Solutions, we turn ideas into brands, challenges into solutions, and technology into opportunities. From creative services to tech support and device solutions, we're here to help you move forward with confidence.</p>
+        <div class="about-tagline">CBS — Empowering Business Through Tech, Creativity &amp; Precision.</div>
+        <div class="about-pillars">
+          <div class="about-pillar"><span class="p-icon">🎯</span><span class="p-label">Customised</span></div>
+          <div class="about-pillar"><span class="p-icon">🏆</span><span class="p-label">Premium Quality</span></div>
+          <div class="about-pillar"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
+          <div class="about-pillar"><span class="p-icon">⚡</span><span class="p-label">Anytime</span></div>
+        </div>
+      </div>
+      <div class="about-right">
+        <h3>Our Commitment</h3>
+        <div class="about-point"><div class="about-point-icon">🎨</div><div class="about-point-text"><h5>Creative Excellence</h5><p>Distinctive designs and branding that make your business stand out.</p></div></div>
+        <div class="about-point"><div class="about-point-icon">🖨️</div><div class="about-point-text"><h5>Print On Demand</h5><p>Fast turnaround on all print jobs — from business cards to large format.</p></div></div>
+        <div class="about-point"><div class="about-point-icon">💻</div><div class="about-point-text"><h5>Tech Solutions</h5><p>Device repairs, swaps, sales and ICT training under one roof.</p></div></div>
+        <div class="about-point"><div class="about-point-icon">📋</div><div class="about-point-text"><h5>Business Support</h5><p>CAC registration, online portals, scanning and more for your business needs.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- CONTACT -->
+<section class="section section--white" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Get In Touch</span>
+      <h2 class="section-title">Contact Us</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="contact-section-label">Phone</div>
+        <div class="contact-cards">
+          <a class="contact-card" href="tel:+2348021104657"><span class="cc-icon">📲</span><div>+234 802 110 4657<span class="cc-label">Tap to call</span></div></a>
+          <a class="contact-card" href="tel:+2348032080783"><span class="cc-icon">📲</span><div>+234 803 2080 783<span class="cc-label">Tap to call</span></div></a>
+        </div>
+        <div class="contact-section-label">Email</div>
+        <div class="contact-cards">
+          <a class="contact-card" href="mailto:cywisbusinesssolutions@gmail.com"><span class="cc-icon">✉️</span><div>cywisbusinesssolutions@gmail.com<span class="cc-label">Send an email</span></div></a>
+        </div>
+        <div class="contact-section-label">Social Media</div>
+        <div class="contact-cards">
+          <a class="contact-card" href="https://facebook.com/cywisbusinesssolutions" target="_blank"><span class="cc-icon">📘</span><div>Cywis Business Solutions<span class="cc-label">Facebook</span></div></a>
+          <a class="contact-card" href="https://instagram.com/cywisbusinesssolutions" target="_blank"><span class="cc-icon">📸</span><div>Cywis Business Solutions<span class="cc-label">Instagram</span></div></a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <h3>Let's Talk</h3>
+        <p>Reach us directly on WhatsApp for the fastest response.</p>
+        <a class="wa-btn" href="https://wa.me/2348021104657" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.885a.5.5 0 0 0 .606.607l6.162-1.52A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.88 9.88 0 0 1-5.031-1.374l-.36-.214-3.733.921.959-3.638-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.467 0 9.9 4.434 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <div class="social-links">
+          <a class="social-link" href="https://facebook.com/cywisbusinesssolutions" target="_blank">📘 Facebook</a>
+          <a class="social-link" href="https://instagram.com/cywisbusinesssolutions" target="_blank">📸 Instagram</a>
+        </div>
+        <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+          <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.8;">📍 Ota, Ogun State, Nigeria<br>🕐 Available anytime</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-row">
+        <div class="footer-logo-circle"><img src="logo.png" alt="CBS"></div>
+        <div class="footer-logo-text">Cywis <span>Business Solutions</span></div>
+      </div>
+      <p class="footer-desc">Empowering businesses through tech, creativity and precision. Your one-stop shop for design, printing, technology and more in Ota, Ogun State.</p>
+      <div class="footer-socials">
+        <a href="https://facebook.com/cywisbusinesssolutions" target="_blank">FB</a>
+        <a href="https://instagram.com/cywisbusinesssolutions" target="_blank">IG</a>
+        <a href="https://wa.me/2348021104657" target="_blank">WA</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Design &amp; Branding</a></li>
+        <li><a href="#services">Printing Services</a></li>
+        <li><a href="#services">Technology Services</a></li>
+        <li><a href="#services">Sales</a></li>
+        <li><a href="#services">Other Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 +234 802 110 4657<br>📞 +234 803 2080 783<br>✉ cywisbusinesssolutions@gmail.com<br>📍 Ota, Ogun State, Nigeria</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Cywis Business Solutions · All rights reserved · Ota, Ogun State, Nigeria</p>
+  </div>
+</footer>
+
+<script>
   function toggleCat(card) {
     const isOpen = card.classList.contains('open');
     document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
-    if (!isOpen) {
-      card.classList.add('open');
-    }
+    if (!isOpen) card.classList.add('open');
   }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
 </script>
 </body>
 </html>
