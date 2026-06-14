@@ -7,16 +7,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Precise color matching from your dashboard image */
-      --skyblue-brand:  #00A3E0;
-      --teal-dark:      #005F87;
-      --teal-card:      #0072A3;
-      --bg-light:       #F4F9FC;
-      --white:          #ffffff;
-      --text-dark:      #1E293B;
-      --text-muted:     #64748B;
-      --border-light:   rgba(0, 163, 224, 0.15);
-      --card-radius:    8px;
+      /* Replaced Navy variants with the vibrant Sky Blue palette directly from your image */
+      --navy:         #00A3E0;
+      --navy-mid:     #0086B8;
+      --navy-light:   #0077A8;
+      --navy-panel:   rgba(0, 163, 224, 0.75);
+      --navy-card:    rgba(0, 134, 184, 0.8);
+      
+      /* Kept all other design variables completely untouched */
+      --yellow:       #F5C100;
+      --yellow-light: #FFD740;
+      --yellow-dark:  #C9A000;
+      --yellow-glow:  rgba(245,193,0,0.25);
+      --border:       rgba(255,255,255,0.12);
+      --border-y:     rgba(245,193,0,0.4);
+      --white:        #ffffff;
+      --white-dim:    rgba(255,255,255,0.68);
+      --white-dimmer: rgba(255,255,255,0.4);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,251 +31,259 @@
 
     body {
       font-family: 'Raleway', sans-serif;
-      background-color: #E2E8F0;
-      color: var(--text-dark);
-      padding: 2rem 1rem;
+      background: #001029;
+      color: var(--white);
+      overflow-x: hidden;
     }
 
-    /* ── APPLICATION CANVAS ── */
     .app-container {
       max-width: 1200px;
       margin: 0 auto;
-      background: var(--bg-light);
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-      overflow: hidden;
+      background: var(--navy);
+      box-shadow: 0 0 50px rgba(0,0,0,0.8);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 90vh;
     }
 
-    /* ── NAVIGATION ── */
     header {
-      background: var(--white);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 2.5rem;
-      border-bottom: 1px solid var(--border-light);
+      background: rgba(0,0,0,0.15);
+      border-bottom: 1px solid var(--border);
     }
     .logo {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 900;
-      color: var(--teal-dark);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .logo span {
-      color: var(--skyblue-brand);
-      font-weight: 400;
-    }
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
+    }
+    .logo span { font-weight: 300; color: var(--white-dim); }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin-left: 2rem;
-      transition: color 0.2s;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
     }
     nav a:hover, nav a.active {
-      color: var(--teal-dark);
+      border-color: var(--yellow);
+      color: var(--yellow);
     }
 
-    /* ── HERO BANNER WITH BACKGROUND IMAGE ── */
     .hero-section {
-      position: relative;
-      background: url('hero-bg.jpg') center center / cover no-repeat;
-      padding: 5rem 2.5rem;
-      display: flex;
-      align-items: center;
-      min-height: 380px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 480px;
+      border-bottom: 1px solid var(--border);
     }
-    /* Clean white-tint overlay instead of dark blocks */
-    .hero-section::before {
+    .hero-text {
+      background: var(--navy-panel);
+      padding: 4rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .welcome-badge {
+      align-self: flex-start;
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: var(--yellow-glow);
+      border: 1px solid var(--border-y);
+      color: var(--yellow);
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-text h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--white-dim);
+      margin-bottom: 2rem;
+    }
+    .cta-group { display: flex; gap: 1rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-yellow { background: var(--yellow); color: #000; }
+    .btn-yellow:hover { background: var(--yellow-light); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--white); transform: translateY(-1px); }
+
+    .hero-image {
+      background: url('hero-bg.jpg') center center / cover no-repeat;
+      position: relative;
+    }
+    .hero-image::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.75) 60%, transparent 100%);
-      z-index: 1;
+      background: linear-gradient(to right, var(--navy-panel), transparent 30%);
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      border-bottom: 1px solid var(--border);
     }
-    .welcome-badge {
-      display: inline-block;
+
+    .services-container {
+      padding: 3.5rem 2.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .section-title {
       font-size: 0.7rem;
       font-weight: 900;
       letter-spacing: 3px;
       text-transform: uppercase;
-      background: var(--teal-dark);
-      color: var(--white);
-      padding: 6px 14px;
-      border-radius: 4px;
-      margin-bottom: 1.5rem;
-    }
-    .hero-content h1 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--teal-dark);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .hero-content p {
-      font-size: 1rem;
-      color: var(--text-dark);
-      line-height: 1.6;
+      color: var(--yellow);
       margin-bottom: 2rem;
     }
-    .btn-primary {
-      display: inline-block;
-      background: var(--skyblue-brand);
+    .tabs-nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .tab-btn {
+      font-family: 'Raleway', sans-serif;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border);
       color: var(--white);
-      padding: 0.9rem 2rem;
-      font-size: 0.8rem;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background 0.2s;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
     }
-    .btn-primary:hover {
-      background: var(--teal-dark);
-    }
-
-    /* ── TWO COLUMN MAIN GRID ── */
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      background: var(--bg-light);
-    }
-
-    /* LEFT PANEL: SERVICES */
-    .services-container {
-      padding: 3.5rem 2.5rem;
-      border-right: 1px solid var(--border-light);
-    }
-    .section-header-text {
-      font-size: 0.8rem;
+    .tab-btn:hover { background: rgba(255,255,255,0.05); }
+    .tab-btn.active {
+      background: var(--yellow);
+      color: #000;
+      border-color: var(--yellow);
       font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--teal-dark);
-      margin-bottom: 2rem;
-      border-bottom: 2px solid var(--skyblue-brand);
-      display: inline-block;
-      padding-bottom: 4px;
     }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
     .cat-grid {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.5rem;
     }
     .cat-card {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--card-radius);
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
       overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.2s;
     }
-    .cat-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-    }
+    .cat-card:hover { border-color: rgba(255,255,255,0.2); }
     .cat-header {
-      background: var(--teal-card);
-      color: var(--white);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.2rem;
     }
-    .cat-title-flex {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .cat-icon { font-size: 1.2rem; }
-    .cat-name { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px; }
-    .cat-chevron { font-size: 0.75rem; transition: transform 0.2s; }
+    .cat-title-flex { display: flex; align-items: center; gap: 10px; }
+    .cat-icon { font-size: 1.1rem; }
+    .cat-name { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+    .cat-chevron { font-size: 0.65rem; color: var(--white-dimmer); transition: transform 0.2s; }
     .cat-card.open .cat-chevron { transform: rotate(180deg); }
 
     .cat-content {
       display: none;
-      padding: 0.5rem 1.5rem;
-      background: var(--white);
+      padding: 0 1.2rem 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(0,0,0,0.1);
     }
     .cat-card.open .cat-content { display: block; }
     .service-item {
-      padding: 0.9rem 0;
-      border-bottom: 1px solid #F1F5F9;
-      font-size: 0.9rem;
-      color: var(--text-dark);
-      font-weight: 600;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+      color: var(--white-dim);
     }
     .service-item:last-child { border-bottom: none; }
 
-    /* RIGHT PANEL: ABOUT US */
     .about-container {
       padding: 3.5rem 2.5rem;
-      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: rgba(0,0,0,0.08);
     }
     .about-text {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--text-dark);
-      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--white-dim);
+      margin-bottom: 1.5rem;
     }
     .cbs-tagline {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 800;
-      color: var(--teal-dark);
-      line-height: 1.5;
-      border-left: 4px solid var(--skyblue-brand);
-      padding-left: 1rem;
-      margin-bottom: 3rem;
+      line-height: 1.4;
+      border-left: 2px solid var(--yellow);
+      padding-left: 0.8rem;
+      margin-bottom: 2.5rem;
     }
     .pillars {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.8rem;
     }
     .pillar {
-      background: var(--bg-light);
-      border: 1px solid var(--border-light);
-      padding: 1.5rem 1rem;
+      background: rgba(0,0,0,0.15);
+      border: 1px solid var(--border);
+      padding: 1.2rem 0.8rem;
       text-align: center;
-      border-radius: var(--card-radius);
+      border-radius: 2px;
     }
-    .p-icon { font-size: 1.7rem; display: block; margin-bottom: 0.4rem; }
-    .p-label { font-size: 0.75rem; font-weight: 800; color: var(--teal-dark); letter-spacing: 0.5px; }
+    .p-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+    .p-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* ── FOOTER ── */
     footer {
-      background: var(--teal-dark);
-      color: var(--white);
-      padding: 2rem 2.5rem;
+      padding: 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(0,0,0,0.2);
       margin-top: auto;
     }
-    .footer-logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 0.5px; }
-    .footer-copy { font-size: 0.8rem; opacity: 0.75; }
+    .footer-logo { font-size: 1rem; font-weight: 900; letter-spacing: 0.5px; }
+    .footer-copy { font-size: 0.75rem; color: var(--white-dimmer); }
 
-    /* ── RESPONSIVE RESPONSIVENESS ── */
-    @media (max-width: 880px) {
-      .main-grid { grid-template-columns: 1fr; }
-      .services-container { border-right: none; border-bottom: 1px solid var(--border-light); }
-      header { flex-direction: column; gap: 1rem; text-align: center; }
-      nav a { margin: 0 0.75rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    @media (max-width: 850px) {
+      .hero-section, .main-grid { grid-template-columns: 1fr; }
+      .hero-image { min-height: 250px; }
+      .services-container { border-right: none; border-bottom: 1px solid var(--border); }
     }
   </style>
 </head>
@@ -286,104 +301,115 @@
   </header>
 
   <div class="hero-section">
-    <div class="hero-content">
+    <div class="hero-text">
       <div class="welcome-badge">Welcome to CBS</div>
       <h1>Your One-Stop Shop for Tech, Media &amp; Engineering</h1>
       <p>
         Cywis Business Solutions delivers premium design, printing, technology services and more — helping individuals and businesses grow with confidence.
       </p>
-      <a href="https://wa.me/2348021104657" target="_blank" class="btn-primary">Chat on WhatsApp</a>
+      <div class="cta-group">
+        <a href="#services" class="btn btn-yellow">Our Services</a>
+        <a href="https://wa.me/2348021104657" target="_blank" class="btn btn-outline">WhatsApp Support</a>
+      </div>
     </div>
+    <div class="hero-image"></div>
   </div>
 
   <div class="main-grid">
     
     <div class="services-container" id="services">
-      <div class="section-header-text">Our ServicesHub</div>
+      <div class="section-title">Our Offered Services</div>
+      
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'all')">All Offerings</button>
+      </div>
 
-      <div class="cat-grid">
+      <div class="tab-panel active" id="tab-all">
+        <div class="cat-grid">
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <div class="cat-title-flex">
-              <span class="cat-icon">🎨</span>
-              <span class="cat-name">Design &amp; Branding</span>
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <div class="cat-title-flex">
+                <span class="cat-icon">🎨</span>
+                <span class="cat-name">Design &amp; Branding</span>
+              </div>
+              <span class="cat-chevron">▼</span>
             </div>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-content">
-            <div class="service-item">Graphic Design</div>
-            <div class="service-item">Branding Services</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <div class="cat-title-flex">
-              <span class="cat-icon">🖨️</span>
-              <span class="cat-name">Printing Services</span>
+            <div class="cat-content">
+              <div class="service-item">Graphic Design</div>
+              <div class="service-item">Branding</div>
             </div>
-            <span class="cat-chevron">▼</span>
           </div>
-          <div class="cat-content">
-            <div class="service-item">General Printing</div>
-            <div class="service-item">Large Format Printing (Flex, Banners, Stickers)</div>
-            <div class="service-item">Print &amp; Copy Management</div>
-          </div>
-        </div>
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <div class="cat-title-flex">
-              <span class="cat-icon">💻</span>
-              <span class="cat-name">Technology Services</span>
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <div class="cat-title-flex">
+                <span class="cat-icon">🖨️</span>
+                <span class="cat-name">Printing Services</span>
+              </div>
+              <span class="cat-chevron">▼</span>
             </div>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-content">
-            <div class="service-item">ICT Vocational Training</div>
-            <div class="service-item">Phone &amp; Laptop Hardware Repairs</div>
-            <div class="service-item">Phone Swapping Options</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <div class="cat-title-flex">
-              <span class="cat-icon">🛒</span>
-              <span class="cat-name">Sales Terminal</span>
+            <div class="cat-content">
+              <div class="service-item">General Printing</div>
+              <div class="service-item">Large Format Printing (Flex, Banners, Stickers, etc.)</div>
+              <div class="service-item">Print &amp; Copy</div>
             </div>
-            <span class="cat-chevron">▼</span>
           </div>
-          <div class="cat-content">
-            <div class="service-item">Gadgets &amp; Premium Accessories</div>
-            <div class="service-item">Office &amp; Corporate Stationery</div>
-          </div>
-        </div>
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <div class="cat-title-flex">
-              <span class="cat-icon">⚙️</span>
-              <span class="cat-name">Other Comprehensive Services</span>
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <div class="cat-title-flex">
+                <span class="cat-icon">💻</span>
+                <span class="cat-name">Technology Services</span>
+              </div>
+              <span class="cat-chevron">▼</span>
             </div>
-            <span class="cat-chevron">▼</span>
+            <div class="cat-content">
+              <div class="service-item">ICT Vocational Training</div>
+              <div class="service-item">Phone &amp; Laptop Repairs</div>
+              <div class="service-item">Phone Swapping</div>
+            </div>
           </div>
-          <div class="cat-content">
-            <div class="service-item">Online Portal &amp; Exam Registrations</div>
-            <div class="service-item">CAC Business Registration</div>
-            <div class="service-item">Instant Passport Photograph</div>
-            <div class="service-item">Document Binding &amp; Lamination</div>
-            <div class="service-item">High-Speed Scanning</div>
-            <div class="service-item">Wall Frames &amp; Exhibition Displays</div>
-          </div>
-        </div>
 
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <div class="cat-title-flex">
+                <span class="cat-icon">🛒</span>
+                <span class="cat-name">Sales</span>
+              </div>
+              <span class="cat-chevron">▼</span>
+            </div>
+            <div class="cat-content">
+              <div class="service-item">Gadgets &amp; Accessories</div>
+              <div class="service-item">Stationery</div>
+            </div>
+          </div>
+
+          <div class="cat-card" onclick="toggleCat(this)">
+            <div class="cat-header">
+              <div class="cat-title-flex">
+                <span class="cat-icon">⚙️</span>
+                <span class="cat-name">Other Services</span>
+              </div>
+              <span class="cat-chevron">▼</span>
+            </div>
+            <div class="cat-content">
+              <div class="service-item">Online Registration</div>
+              <div class="service-item">CAC Registration</div>
+              <div class="service-item">Passport Photograph</div>
+              <div class="service-item">Binding &amp; Lamination</div>
+              <div class="service-item">Scanning</div>
+              <div class="service-item">Wall Frames &amp; Display</div>
+              <div class="service-item">Signs &amp; Exhibitions</div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
     <div class="about-container" id="about">
-      <div class="section-header-text">About Us</div>
+      <div class="section-title">About Us</div>
       <p class="about-text">
         At Cywis Business Solutions, we turn ideas into brands, challenges into solutions, and technology into opportunities. From creative services to tech support and device solutions, we’re here to help you move forward with confidence.
       </p>
@@ -408,6 +434,13 @@
 </div>
 
 <script>
+  function openTab(e, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
   function toggleCat(card) {
     const isOpen = card.classList.contains('open');
     document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
