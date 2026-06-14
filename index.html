@@ -4,27 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cywis Business Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Befitting Deep Corporate Royal Blue System */
-      --electric:      #002244;
-      --electric-mid:  #003366;
-      --electric-light:#004488;
-      --electric-panel:rgba(0, 34, 68, 0.75);
-      --electric-card: rgba(0, 20, 40, 0.65);
-      --electric-deep: #010810;
-      
-      /* Premium Unified Befitting Corporate Yellow/Gold Accent */
-      --befitting-yellow: #ffbf00;
-      
-      /* Structural System maintained exactly from your file */
-      --border:        rgba(255,255,255,0.18);
-      --border-bright: rgba(255,255,255,0.35);
-      --white:         #ffffff;
-      --white-dim:     rgba(255,255,255,0.70);
-      --white-dimmer:  rgba(255,255,255,0.40);
-      --white-faint:   rgba(255,255,255,0.10);
+      /* Executive High-Aura Palette */
+      --navy-base:    #000d22; /* Pure obsidian navy */
+      --navy-panel:   #001433; /* Deep solid section backgrounds */
+      --navy-card:    #002060; /* Midnight blue for components */
+      --gold-accent:  #F5C100; /* Precise corporate golden yellow */
+      --gold-light:   #FFD740;
+      --text-pure:    #ffffff;
+      --text-muted:   #8a95a8;
+      --border-line:  rgba(255, 255, 255, 0.08);
+      --border-gold:  rgba(245, 193, 0, 0.25);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,641 +24,526 @@
 
     body {
       font-family: 'Raleway', sans-serif;
-      background: var(--electric-deep);
-      color: var(--white);
+      background-color: var(--navy-base);
+      color: var(--text-pure);
       min-height: 100vh;
-      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    /* ── BACKGROUND ── */
-    .bg-fixed {
-      position: fixed; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 75% 55% at 12% 18%, rgba(0, 68, 136, 0.4) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 45% at 88% 82%, rgba(1, 8, 16, 0.85) 0%, transparent 60%),
-        linear-gradient(160deg, #01050a 0%, #002244 45%, #01050a 100%);
-    }
-
-    .bg-dots {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.15;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px);
-      background-size: 34px 34px;
-    }
-
-    .bg-glow {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: radial-gradient(ellipse 50% 35% at 50% 0%, rgba(0, 68, 136, 0.2) 0%, transparent 70%);
-    }
-
-    /* ── CORNER ORNAMENTS ── */
-    .corner {
-      position: fixed; z-index: 2; width: 52px; height: 52px;
-      pointer-events: none; opacity: 0.3;
-    }
-    .corner--tl { top: 18px; left: 18px; border-top: 1.5px solid #fff; border-left: 1.5px solid #fff; }
-    .corner--tr { top: 18px; right: 18px; border-top: 1.5px solid #fff; border-right: 1.5px solid #fff; }
-    .corner--bl { bottom: 18px; left: 18px; border-bottom: 1.5px solid #fff; border-left: 1.5px solid #fff; }
-    .corner--br { bottom: 18px; right: 18px; border-bottom: 1.5px solid #fff; border-right: 1.5px solid #fff; }
-
-    /* ── WRAPPER ── */
+    /* ── BASE CONTAINER ── */
     .wrapper {
-      position: relative; z-index: 1;
-      max-width: 880px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 5rem;
+      padding: 3rem 1.5rem;
     }
 
-    /* ── HEADER ── */
-    header { text-align: center; padding: 2rem 0 2rem; }
-
-    .logo-wrap {
-      width: 88px; height: 88px;
-      margin: 0 auto 1.3rem;
-      background: white;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 6px rgba(255,255,255,0.1), 0 0 40px rgba(0,68,136,0.35);
-      padding: 11px;
+    /* ── HIGH-AURA HERO ARCHITECTURE ── */
+    .hero-container {
+      position: relative;
+      background-color: var(--navy-panel);
+      border: 1px solid var(--border-line);
+      border-radius: 12px;
+      padding: 4.5rem 3rem;
+      margin-bottom: 3rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    .logo-wrap img {
-      width: 100%; height: 100%;
+    /* Layered Photographic Backdrop Integration */
+    .hero-bg-photo {
+      position: absolute;
+      inset: 0;
+      background-image: url('office.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18; /* Retains environment depth without crowding layout */
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .logo-container {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.75rem;
+      background: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 1px solid var(--border-line);
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
-      display: block;
     }
 
     .site-title {
-      font-family: 'Raleway', sans-serif;
-      font-size: clamp(20px, 5vw, 36px);
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 2px;
-      line-height: 1.2;
-      /* Removed text-transform uppercase to preserve mixed casing */
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 800;
+      color: var(--text-pure);
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
     }
 
     .site-sub {
-      font-size: 11px;
-      letter-spacing: 5px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--white-dim);
-      margin-top: 8px;
+      color: var(--gold-accent);
+      margin-bottom: 2rem;
+    }
+
+    .welcome-text {
+      font-size: 16px;
+      color: var(--text-muted);
       font-weight: 500;
+      line-height: 1.8;
     }
 
-    .divider-line {
-      display: flex; align-items: center; gap: 14px;
-      margin: 1.4rem auto; max-width: 360px;
-    }
-    .divider-line .ln {
-      flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    }
-    .divider-line .dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: rgba(255,255,255,0.55); flex-shrink: 0;
-    }
-
-    /* ── WELCOME BANNER ── */
-    .welcome {
-      background: var(--electric-panel);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.8rem 2rem;
-      margin-bottom: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-    }
-
-    .welcome::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
-    }
-
-    .welcome-heading {
-      font-size: clamp(16px, 3.5vw, 22px);
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
-
-    .welcome-body {
-      font-size: 14px;
-      color: var(--white);
-      line-height: 1.85;
-      font-weight: 400;
-    }
-
-    /* ── TABS NAV ── */
+    /* ── NAVIGATION ARCHITECTURE ── */
     .tabs-nav {
       display: flex;
-      gap: 6px;
+      border-bottom: 2px solid var(--navy-panel);
       margin-bottom: 0;
-      flex-wrap: wrap;
     }
 
     .tab-btn {
       font-family: 'Raleway', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 12px 26px;
-      border: 1px solid rgba(255,255,255,0.18);
-      border-bottom: none;
-      background: rgba(0,15,40,0.5);
-      color: var(--white-dim);
+      padding: 16px 36px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
       cursor: pointer;
-      transition: all 0.2s;
-      border-radius: 5px 5px 0 0;
       position: relative;
-      bottom: -1px;
-      backdrop-filter: blur(4px);
+      transition: color 0.2s;
     }
 
-    .tab-btn:hover {
-      background: rgba(0,35,80,0.7);
-      color: var(--white);
-      border-color: rgba(255,255,255,0.3);
-    }
-
-    /* Active Tab Glow & Text Color Changes to Gold/Yellow */
-    .tab-btn.active {
-      background: var(--electric-panel);
-      color: var(--befitting-yellow);
-      border-color: rgba(255,255,255,0.28);
-      border-bottom-color: var(--electric-panel);
-      font-weight: 900;
-    }
+    .tab-btn:hover { color: var(--text-pure); }
+    .tab-btn.active { color: var(--gold-accent); }
 
     .tab-btn.active::after {
       content: '';
-      position: absolute; bottom: -1px; left: 0; right: 0; height: 2px;
-      background: var(--electric-panel);
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--gold-accent);
     }
 
-    .tab-btn.active::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--befitting-yellow), transparent);
-    }
-
-    /* ── TABS BODY ── */
+    /* ── TAB PANEL FRAMEWORK ── */
     .tabs-body {
-      background: rgba(0, 34, 68, 0.55);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: var(--navy-panel);
+      border: 1px solid var(--border-line);
       border-top: none;
-      border-radius: 0 6px 6px 6px;
-      padding: 2rem 1.75rem;
-      min-height: 380px;
-      backdrop-filter: blur(12px);
+      border-radius: 0 0 12px 12px;
+      padding: 3.5rem 3rem;
+      min-height: 450px;
     }
 
     .tab-panel { display: none; }
-    .tab-panel.active { display: block; animation: reveal 0.3s ease; }
+    .tab-panel.active { display: block; }
 
-    @keyframes reveal {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── PANEL HEADINGS ── */
-    .panel-heading {
-      font-size: clamp(18px, 4vw, 26px);
-      font-weight: 900;
-      color: var(--befitting-yellow);
-      letter-spacing: 1px;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-
-    .panel-sub {
-      font-size: 13px;
-      color: var(--white-dim);
-      margin-bottom: 1.6rem;
-      font-weight: 400;
-    }
-
-    /* ── SERVICE CATEGORIES ── */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 10px;
-    }
-
-    .cat-card {
-      background: var(--electric-card);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 5px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .cat-card:hover { border-color: rgba(255,255,255,0.4); }
-
-    .cat-card.open {
-      border-color: rgba(255,255,255,0.55);
-      box-shadow: 0 0 22px rgba(0,68,136,0.2);
-    }
-
-    .cat-header {
-      display: flex; align-items: center; gap: 10px;
-      padding: 13px 16px;
-    }
-
-    .cat-icon { font-size: 18px; flex-shrink: 0; }
-
-    .cat-name {
-      font-size: 12px;
+    .panel-title {
+      font-size: 26px;
       font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--white);
-      flex: 1;
+      color: var(--text-pure);
+      margin-bottom: 2rem;
     }
 
-    .cat-chevron {
-      font-size: 10px;
-      color: var(--white-dim);
-      transition: transform 0.25s;
-      flex-shrink: 0;
+    /* ── ABOUT STRUCTURAL PROFILE ── */
+    .profile-text {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 2.25rem;
+      max-width: 800px;
     }
 
-    .cat-card.open .cat-chevron { transform: rotate(180deg); color: var(--white); }
-
-    .cat-items {
-      display: none;
-      padding: 0 16px 14px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .cat-card.open .cat-items { display: flex; }
-
-    .cat-item {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: 13px;
-      color: var(--white);
-      padding: 5px 0;
-      font-weight: 400;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      line-height: 1.4;
-    }
-    .cat-item:last-child { border-bottom: none; }
-
-    .cat-item::before {
-      content: '◈';
-      color: var(--befitting-yellow);
-      font-size: 9px;
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-
-    .cat-item-note {
-      color: var(--white-dimmer);
-      font-size: 11px;
-      display: block;
-      margin-top: 1px;
-    }
-
-    /* ── CONTACT TAB ── */
-    .contact-section-label {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--white-dimmer);
-      margin: 1.4rem 0 8px;
+    .signature-motto {
+      font-size: 18px;
       font-weight: 700;
-    }
-    .contact-section-label:first-of-type { margin-top: 0; }
-
-    .contact-grid { display: flex; flex-direction: column; gap: 10px; }
-
-    .contact-card {
-      display: flex; align-items: center; gap: 16px;
-      background: var(--electric-card);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 5px;
-      padding: 13px 18px;
-      text-decoration: none;
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 600;
-      transition: border-color 0.2s, background 0.2s;
+      color: var(--text-pure);
+      border-left: 4px solid var(--gold-accent);
+      padding-left: 24px;
+      margin: 3rem 0;
     }
 
-    .contact-card:hover {
-      border-color: rgba(255,255,255,0.42);
-      background: rgba(0, 34, 68, 0.65);
+    .corporate-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
-    .cc-icon { font-size: 22px; flex-shrink: 0; }
-
-    .cc-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white-dimmer);
-      font-weight: 400;
-      display: block;
-      margin-top: 2px;
+    .pillar-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border-line);
+      border-radius: 6px;
+      padding: 24px 16px;
+      text-align: center;
     }
+    .pillar-card .p-icon { font-size: 24px; display: block; margin-bottom: 10px; }
+    .pillar-card .p-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
 
-    .wa-btn {
-      display: flex; align-items: center; gap: 12px;
-      background: linear-gradient(135deg, #0d5c4a, #128C7E);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 5px;
-      padding: 13px 20px;
-      color: white;
-      font-size: 12px;
-      font-weight: 800;
+    /* ── COMMUNICATIONS FRAMEWORK ── */
+    .comms-label {
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      text-decoration: none;
-      transition: opacity 0.2s;
+      color: var(--gold-accent);
+      margin: 2rem 0 0.85rem;
     }
-    .wa-btn:hover { opacity: 0.88; }
+    .comms-label:first-of-type { margin-top: 0; }
 
-    /* ── ABOUT TAB ── */
-    .about-body {
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--white);
-      font-weight: 400;
-      margin-bottom: 1.4rem;
-    }
-
-    .cbs-tagline {
-      font-size: clamp(14px, 3vw, 17px);
-      color: var(--white);
-      border-left: 3px solid var(--befitting-yellow);
-      padding-left: 18px;
-      line-height: 1.6;
-      margin-top: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    .pillars {
+    .comms-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 10px;
-      margin-top: 1.8rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
     }
 
-    .pillar {
-      background: var(--electric-card);
-      border: 1px solid rgba(255,255,255,0.13);
-      border-top: 2px solid rgba(255,255,255,0.5);
-      border-radius: 4px;
-      padding: 14px 12px;
-      text-align: center;
-      transition: border-color 0.2s, background 0.2s;
+    .comms-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--navy-card);
+      border: 1px solid var(--border-line);
+      padding: 18px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-pure);
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .pillar:hover { border-top-color: var(--befitting-yellow); background: rgba(0, 34, 68, 0.55); }
-    .pillar .p-icon { font-size: 22px; display: block; margin-bottom: 6px; }
-    .pillar .p-label {
-      font-size: 10px;
+    .comms-card:hover { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.15); }
+    .comms-meta { font-size: 12px; color: var(--text-muted); display: block; margin-top: 3px; font-weight: 400; }
+
+    .whatsapp-direct-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #128C7E;
+      color: #ffffff;
+      padding: 16px 32px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+
+    /* ── CAPABILITIES (SERVICES) SECTION ── */
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+    }
+
+    .accordion-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .service-block {
+      background: var(--navy-card);
+      border: 1px solid var(--border-line);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .service-block.open { border-color: var(--border-gold); }
+
+    .service-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+    }
+
+    .service-trigger-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .service-indicator { font-size: 11px; color: var(--text-muted); transition: transform 0.2s; }
+    .service-block.open .service-indicator { transform: rotate(180deg); color: var(--gold-accent); }
+
+    .service-dropdown {
+      display: none;
+      padding: 0 24px 24px 52px;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .service-block.open .service-dropdown { display: flex; }
+
+    .item-node { font-size: 14px; color: var(--text-pure); font-weight: 500; }
+    .item-context { font-size: 12px; color: var(--text-muted); display: block; margin-top: 2px; }
+
+    /* Industrial Print Media Showcase Element */
+    .showcase-panel {
+      background: var(--navy-card);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .showcase-label {
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--white);
-      font-weight: 800;
+      color: var(--gold-accent);
+      margin-bottom: 1rem;
     }
 
-    /* ── FOOTER ── */
+    .showcase-frame {
+      width: 100%;
+      height: 340px;
+      border-radius: 6px;
+      background-image: url('prints.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ── FOOTER ARCHITECTURE ── */
     footer {
       text-align: center;
-      margin-top: 3.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.13);
+      margin-top: 6rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border-line);
     }
 
-    .footer-logo {
-      font-size: 14px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--white);
-      font-weight: 900;
-    }
+    .footer-identity { font-size: 15px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+    .footer-copyright { font-size: 12px; color: var(--text-muted); }
 
-    .footer-copy {
-      font-size: 11px;
-      color: var(--white-dim);
-      margin-top: 6px;
-      letter-spacing: 1px;
+    /* Responsive Adapts */
+    @media (max-width: 860px) {
+      .services-layout { grid-template-columns: 1fr; }
+      .showcase-frame { height: 260px; }
+      .corporate-pillars { grid-template-columns: repeat(2, 1fr); }
+      .tabs-body { padding: 2.5rem 1.5rem; }
+      .hero-container { padding: 3rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<div class="bg-fixed"></div>
-<div class="bg-glow"></div>
-<div class="bg-dots"></div>
-
-<div class="corner corner--tl"></div>
-<div class="corner corner--tr"></div>
-<div class="corner corner--bl"></div>
-<div class="corner corner--br"></div>
-
 <div class="wrapper">
 
-  <header>
-    <div class="logo-wrap">
-      <img src="logo.png" alt="Cywis Business Solutions logo" />
-    </div>
-    <h1 class="site-title">Cywis Business Solutions</h1>
-    <p class="site-sub">Tech · Media · Engineering</p>
-    <div class="divider-line">
-      <div class="ln"></div><div class="dot"></div><div class="ln"></div>
-    </div>
-  </header>
-
-  <div class="welcome">
-    <div class="welcome-heading">Welcome to Cywis Business Solutions</div>
-    <div class="welcome-body">
-      Your One-Stop Shop for Tech, Media and Engineering.<br>
-      We empower businesses with premium quality, customised solutions —
-      delivered with precision, creativity and excellence.
+  <div class="hero-container">
+    <div class="hero-bg-photo"></div>
+    <div class="hero-content">
+      <div class="logo-container">
+        <img src="logo.png" alt="Cywis Business Solutions logo" />
+      </div>
+      <h1 class="site-title">Cywis Business Solutions</h1>
+      <p class="site-sub">Tech · Media · Engineering</p>
+      <p class="welcome-text">
+        Providing customized business integrations, premium production media, and infrastructure support parameters with technical precision and excellence.
+      </p>
     </div>
   </div>
 
   <div class="tabs-nav">
-    <button class="tab-btn active" onclick="openTab(event,'about')">About</button>
-    <button class="tab-btn" onclick="openTab(event,'contact')">Contact</button>
-    <button class="tab-btn" onclick="openTab(event,'services')">Services</button>
+    <button class="tab-btn active" onclick="switchPanel(event,'about')">About</button>
+    <button class="tab-btn" onclick="switchPanel(event,'contact')">Contact</button>
+    <button class="tab-btn" onclick="switchPanel(event,'services')">Services</button>
   </div>
 
   <div class="tabs-body">
 
-    <div class="tab-panel active" id="tab-about">
-      <div class="panel-heading">About Us</div>
-      <p class="panel-sub">Who we are and what we stand for</p>
-      <p class="about-body">
-        Cywis Business Solutions provides smart technology, branding, and business solutions.
-        From design, printing, and training to gadget sales, device repairs and phone swaps,
-        we deliver quality services that help individuals and businesses grow with confidence.
+    <div class="tab-panel active" id="view-about">
+      <h2 class="panel-title">Corporate Overview</h2>
+      <p class="profile-text">
+        Cywis Business Solutions is a comprehensive engineering, media, and technology enterprise configured to optimize operational pipelines for corporate entities and private clients alike. We replace standard consumer layouts with robust, heavy systems built for longevity.
       </p>
-      <div class="cbs-tagline">
+      <p class="profile-text">
+        Our enterprise scopes everything from verified statutory corporate registrations (CAC) to deep hardware diagnostic recovery lines and complete commercial visual production prints.
+      </p>
+      <div class="signature-motto">
         CBS — Your One-Stop Shop for Tech, Media &amp; Engineering.
       </div>
-      <div class="pillars">
-        <div class="pillar"><span class="p-icon">🎯</span><span class="p-label">Customised</span></div>
-        <div class="pillar"><span class="p-icon">🏆</span><span class="p-label">Premium Quality</span></div>
-        <div class="pillar"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
-        <div class="pillar"><span class="p-icon">⚡</span><span class="p-label">Anytime</span></div>
+      <div class="corporate-pillars">
+        <div class="pillar-card"><span class="p-icon">🎯</span><span class="p-label">Customized</span></div>
+        <div class="pillar-card"><span class="p-icon">🏆</span><span class="p-label">Premium</span></div>
+        <div class="pillar-card"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
+        <div class="pillar-card"><span class="p-icon">⚡</span><span class="p-label">Reliable</span></div>
       </div>
     </div>
 
-    <div class="tab-panel" id="tab-contact">
-      <div class="panel-heading">Reach Us</div>
-      <p class="panel-sub">We are always available — call, message or connect with us</p>
+    <div class="tab-panel" id="view-contact">
+      <h2 class="panel-title">Communications Hub</h2>
 
-      <div class="contact-section-label">Phone</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="tel:+2348021104657">
-          <span class="cc-icon">📲</span>
-          <div>+234 802 110 4657<span class="cc-label">Tap to call</span></div>
+      <div class="comms-label">Voice Networks</div>
+      <div class="comms-grid">
+        <a class="comms-card" href="tel:+2348021104657">
+          <span>📞</span>
+          <div>+234 802 110 4657<span class="comms-meta">Primary Trunk</span></div>
         </a>
-        <a class="contact-card" href="tel:+2348032080783">
-          <span class="cc-icon">📲</span>
-          <div>+234 803 2080 783<span class="cc-label">Tap to call</span></div>
+        <a class="comms-card" href="tel:+2348032080783">
+          <span>📞</span>
+          <div>+234 803 208 0783<span class="comms-meta">Secondary Line</span></div>
         </a>
       </div>
 
-      <div class="contact-section-label">Email</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:cywisbusinesssolutions@gmail.com">
-          <span class="cc-icon">✉️</span>
-          <div>cywisbusinesssolutions@gmail.com<span class="cc-label">Send an email</span></div>
+      <div class="comms-label">Electronic Mail Link</div>
+      <div class="comms-grid">
+        <a class="comms-card" href="mailto:cywisbusinesssolutions@gmail.com">
+          <span>✉️</span>
+          <div>cywisbusinesssolutions@gmail.com<span class="comms-meta">Corporate Desk</span></div>
         </a>
       </div>
 
-      <div class="contact-section-label">Social Media</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="https://facebook.com/cywisbusinesssolutions" target="_blank">
-          <span class="cc-icon">📘</span>
-          <div>Cywis Business Solutions<span class="cc-label">Facebook</span></div>
+      <div class="comms-label">Social Media Profiles</div>
+      <div class="comms-grid">
+        <a class="comms-card" href="https://facebook.com/cywisbusinesssolutions" target="_blank">
+          <span>🌐</span>
+          <div>Cywis Business Solutions<span class="comms-meta">Facebook Identity</span></div>
         </a>
-        <a class="contact-card" href="https://instagram.com/cywisbusinesssolutions" target="_blank">
-          <span class="cc-icon">📸</span>
-          <div>Cywis Business Solutions<span class="cc-label">Instagram</span></div>
+        <a class="comms-card" href="https://instagram.com/cywisbusinesssolutions" target="_blank">
+          <span>📸</span>
+          <div>Cywis Business Solutions<span class="comms-meta">Instagram Ledger</span></div>
         </a>
       </div>
 
-      <div class="contact-section-label" style="margin-top:1.4rem;">WhatsApp</div>
-      <a class="wa-btn" href="https://wa.me/2348021104657" target="_blank">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.885a.5.5 0 0 0 .606.607l6.162-1.52A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.88 9.88 0 0 1-5.031-1.374l-.36-.214-3.733.921.959-3.638-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.467 0 9.9 4.434 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/>
-        </svg>
-        Chat on WhatsApp
+      <div class="comms-label">Secure Messaging Gateway</div>
+      <a class="whatsapp-direct-btn" href="https://wa.me/2348021104657" target="_blank">
+        Initialize WhatsApp Gateway
       </a>
     </div>
 
-    <div class="tab-panel" id="tab-services">
-      <div class="panel-heading">What We Offer</div>
-      <p class="panel-sub">Select a category to explore our services</p>
-      <div class="cat-grid">
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🎨</span>
-            <span class="cat-name">Design &amp; Branding</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Graphic Design</div>
-            <div class="cat-item">Branding</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🖨️</span>
-            <span class="cat-name">Printing Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">General Printing</div>
-            <div class="cat-item">
-              Large Format Printing
-              <span class="cat-item-note">Flex, Banners, Stickers, etc.</span>
+    <div class="tab-panel" id="view-services">
+      <h2 class="panel-title">Operational Capabilities</h2>
+      
+      <div class="services-layout">
+        
+        <div class="accordion-group">
+          <div class="service-block" onclick="toggleBlock(this)">
+            <div class="service-trigger">
+              <div class="service-trigger-title"><span>🎨</span> Design &amp; Branding</div>
+              <span class="service-indicator">▼</span>
             </div>
-            <div class="cat-item">Print &amp; Copy</div>
+            <div class="service-dropdown">
+              <div class="item-node">Graphic Design</div>
+              <div class="item-node">Corporate Asset Architecture &amp; Brand Systems</div>
+            </div>
+          </div>
+
+          <div class="service-block" onclick="toggleBlock(this)">
+            <div class="service-trigger">
+              <div class="service-trigger-title"><span>🖨️</span> Production &amp; Printing</div>
+              <span class="service-indicator">▼</span>
+            </div>
+            <div class="service-dropdown">
+              <div class="item-node">General Print Formats</div>
+              <div class="item-node">
+                Large Format Industrial Systems
+                <span class="item-context">Flex Media, Heavy-Gauge Banners, High-Gloss Structural Stickers</span>
+              </div>
+              <div class="item-node">Document Processing &amp; Copy Management</div>
+            </div>
+          </div>
+
+          <div class="service-block" onclick="toggleBlock(this)">
+            <div class="service-trigger">
+              <div class="service-trigger-title"><span>💻</span> Engineering &amp; Tech</div>
+              <span class="service-indicator">▼</span>
+            </div>
+            <div class="service-dropdown">
+              <div class="item-node">ICT Technical Vocational Training Programs</div>
+              <div class="item-node">Micro-Soldering Component Repairs (Laptops/Smartphones)</div>
+              <div class="item-node">Asset Remodeling &amp; Value Trade (Phone Swapping)</div>
+            </div>
+          </div>
+
+          <div class="service-block" onclick="toggleBlock(this)">
+            <div class="service-trigger">
+              <div class="service-trigger-title"><span>🛒</span> Procurement &amp; Logistics</div>
+              <span class="service-indicator">▼</span>
+            </div>
+            <div class="service-dropdown">
+              <div class="item-node">Enterprise Device Provisioning &amp; Peripheral Accessories</div>
+              <div class="item-node">Commercial Stationeries &amp; Office Procurement Materials</div>
+            </div>
+          </div>
+
+          <div class="service-block" onclick="toggleBlock(this)">
+            <div class="service-trigger">
+              <div class="service-trigger-title"><span>⚙️</span> Registry &amp; Statutory Utilities</div>
+              <span class="service-indicator">▼</span>
+            </div>
+            <div class="service-dropdown">
+              <div class="item-node">Government Portals &amp; Electronic Forms Architecture</div>
+              <div class="item-node">CAC Legal Framework Entity Formations</div>
+              <div class="item-node">Biometric Portrait Capture (Passport Photographs)</div>
+              <div class="item-node">Data Digitization (High-Speed Archival Scanning)</div>
+              <div class="item-node">Document Security (Binding &amp; Industrial Lamination)</div>
+              <div class="item-node">Visual Displays (Bespoke Wall Frames &amp; Exhibition Signs)</div>
+            </div>
           </div>
         </div>
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">💻</span>
-            <span class="cat-name">Technology Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">ICT Vocational Training</div>
-            <div class="cat-item">Phone &amp; Laptop Repairs</div>
-            <div class="cat-item">Phone Swapping</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🛒</span>
-            <span class="cat-name">Sales</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Gadgets &amp; Accessories</div>
-            <div class="cat-item">Stationery</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">⚙️</span>
-            <span class="cat-name">Other Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Online Registration</div>
-            <div class="cat-item">CAC Registration</div>
-            <div class="cat-item">Passport Photograph</div>
-            <div class="cat-item">Binding &amp; Lamination</div>
-            <div class="cat-item">Scanning</div>
-            <div class="cat-item">Wall Frames &amp; Display</div>
-            <div class="cat-item">Signs &amp; Exhibitions</div>
-          </div>
+        <div class="showcase-panel">
+          <div class="showcase-label">Media &amp; Print Portfolio</div>
+          <div class="showcase-frame"></div>
         </div>
 
       </div>
+
     </div>
 
   </div>
 
   <footer>
-    <div class="footer-logo">Cywis Business Solutions</div>
-    <div class="footer-copy">&copy; 2026 · Ota, Ogun State, Nigeria · All rights reserved</div>
+    <div class="footer-identity">Cywis Business Solutions</div>
+    <div class="footer-copyright">&copy; 2026 · Ota, Ogun State, Nigeria · All rights reserved</div>
   </footer>
 
 </div>
 
 <script>
-  function openTab(e, id) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    e.currentTarget.classList.add('active');
-    document.getElementById('tab-' + id).classList.add('active');
+  function switchPanel(event, targetId) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    
+    event.currentTarget.classList.add('active');
+    document.getElementById('view-' + targetId).classList.add('active');
   }
 
-  function toggleCat(card) {
-    const isOpen = card.classList.contains('open');
-    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
-    if (!isOpen) card.classList.add('open');
+  function toggleBlock(blockElement) {
+    const isCurrentlyOpen = blockElement.classList.contains('open');
+    document.querySelectorAll('.service-block').forEach(item => item.classList.remove('open'));
+    if (!isCurrentlyOpen) {
+      blockElement.classList.add('open');
+    }
   }
 </script>
 </body>
