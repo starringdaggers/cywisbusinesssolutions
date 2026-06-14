@@ -7,17 +7,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --deep-blue:      #050b1a;
-      --navy-base:      #0b1528;
-      --navy-panel:     rgba(15, 28, 54, 0.7);
-      --navy-card:      rgba(22, 42, 80, 0.6);
-      --accent-yellow:  #ffd700;
-      --accent-glow:    rgba(255, 215, 0, 0.2);
-      --border:         rgba(255, 255, 255, 0.1);
-      --border-bright:  rgba(255, 255, 255, 0.25);
+      /* Exact Corporate Blue matching the Logo image */
+      --logo-blue:      #0047a0;
+      --logo-blue-glow: rgba(0, 71, 160, 0.35);
+      --dark-bg:        #020b18;
+      --panel-bg:       rgba(3, 18, 41, 0.75);
+      --card-bg:        rgba(5, 28, 64, 0.6);
+      
+      /* Gamified Accents */
+      --accent-gold:    #ffd700;
+      --accent-gold-rgb: 255, 215, 0;
+      --xp-green:       #00ffcc;
+      
+      /* Structural System */
+      --border-soft:    rgba(255, 255, 255, 0.08);
+      --border-bright:  rgba(255, 255, 255, 0.2);
       --white:          #ffffff;
       --white-dim:      rgba(255, 255, 255, 0.75);
-      --white-dimmer:   rgba(255, 255, 255, 0.45);
+      --white-faint:    rgba(255, 255, 255, 0.4);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,51 +32,55 @@
 
     body {
       font-family: 'Raleway', sans-serif;
-      background: var(--deep-blue);
+      background: var(--dark-bg);
       color: var(--white);
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ── BACKGROUND ── */
+    /* ── HIGH-END LUXURY BACKGROUND ── */
     .bg-fixed {
       position: fixed; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse 75% 55% at 12% 18%, rgba(11, 36, 91, 0.6) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 45% at 88% 82%, rgba(5, 15, 38, 0.9) 0%, transparent 60%),
-        linear-gradient(160deg, #050b1a 0%, #0d1b33 45%, #050b1a 100%);
+        radial-gradient(circle at 15% 20%, var(--logo-blue-glow) 0%, transparent 55%),
+        radial-gradient(circle at 85% 80%, rgba(2, 20, 50, 0.8) 0%, transparent 65%),
+        linear-gradient(160deg, #020710 0%, #04142c 50%, #020710 100%);
     }
 
-    .bg-dots {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.12;
-      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
-      background-size: 34px 34px;
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.04;
+      background-image: 
+        linear-gradient(to right, #fff 1px, transparent 1px),
+        linear-gradient(to bottom, #fff 1px, transparent 1px);
+      background-size: 40px 40px;
     }
 
-    .bg-glow {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: radial-gradient(ellipse 50% 35% at 50% 0%, rgba(13, 38, 91, 0.3) 0%, transparent 70%);
-    }
-
-    /* ── WRAPPER ── */
     .wrapper {
       position: relative; z-index: 1;
-      max-width: 880px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 2.5rem 1.25rem 5rem;
     }
 
     /* ── HEADER ── */
-    header { text-align: center; padding: 2rem 0; }
+    header { text-align: center; padding: 1.5rem 0 2rem; }
+
+    .logo-container {
+      position: relative;
+      width: 100px; height: 100px;
+      margin: 0 auto 1.5rem;
+    }
 
     .logo-wrap {
-      width: 88px; height: 88px;
-      margin: 0 auto 1.3rem;
-      background: white;
+      width: 100%; height: 100%;
+      background: #ffffff;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08), 0 0 40px rgba(13, 38, 91, 0.4);
-      padding: 11px;
+      padding: 14px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 2px solid var(--logo-blue);
     }
 
     .logo-wrap img {
@@ -78,77 +89,111 @@
       display: block;
     }
 
+    /* Gamified Pulse Ring */
+    .logo-pulse {
+      position: absolute; inset: -4px;
+      border: 2px dashed var(--accent-gold);
+      border-radius: 50%;
+      z-index: 1;
+      animation: rotateRing 20s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     .site-title {
-      font-size: clamp(20px, 5vw, 36px);
+      font-size: clamp(22px, 5vw, 36px);
       font-weight: 900;
       color: var(--white);
-      letter-spacing: 2px;
-      line-height: 1.2;
+      letter-spacing: 3px;
       text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(0, 71, 160, 0.4);
     }
 
     .site-sub {
       font-size: 11px;
-      letter-spacing: 5px;
+      letter-spacing: 6px;
       text-transform: uppercase;
       color: var(--white-dim);
       margin-top: 8px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    .divider-line {
-      display: flex; align-items: center; gap: 14px;
-      margin: 1.4rem auto; max-width: 360px;
-    }
-    .divider-line .ln {
-      flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    }
-    .divider-line .dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--accent-yellow); flex-shrink: 0;
-      box-shadow: 0 0 8px var(--accent-yellow);
-    }
-
-    /* ── WELCOME BANNER ── */
-    .welcome {
-      background: var(--navy-panel);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.8rem 2rem;
+    /* ── USER SYSTEMS BAR (GAMIFIED DASHBOARD HUD) ── */
+    .hud-bar {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-bright);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
       margin-bottom: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
     }
 
-    .welcome::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+    .hud-stat {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .welcome-heading {
-      font-size: clamp(16px, 3.5vw, 22px);
+    .hud-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white-faint);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .hud-value {
+      font-size: 15px;
       font-weight: 800;
       color: var(--white);
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .welcome-body {
-      font-size: 14px;
-      color: var(--white-dim);
-      line-height: 1.85;
-      font-weight: 400;
+    .badge-gold {
+      color: var(--accent-gold);
+      font-size: 12px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: rgba(255, 215, 0, 0.05);
     }
 
-    /* ── TABS NAV ── */
+    /* Interactive XP Line Tracker */
+    .xp-container {
+      width: 100%;
+    }
+    .xp-bar-bg {
+      width: 100%; height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 5px;
+      position: relative;
+    }
+    .xp-bar-fill {
+      width: 75%; height: 100%;
+      background: linear-gradient(90deg, var(--logo-blue), var(--xp-green));
+      border-radius: 3px;
+      transition: width 0.5s ease;
+      box-shadow: 0 0 8px var(--xp-green);
+    }
+
+    /* ── ELEGANT TAB REGION ── */
     .tabs-nav {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 0;
-      flex-wrap: wrap;
     }
 
     .tab-btn {
@@ -157,496 +202,108 @@
       font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 12px 26px;
-      border: 1px solid var(--border);
+      padding: 14px 28px;
+      border: 1px solid var(--border-soft);
       border-bottom: none;
-      background: rgba(11, 21, 40, 0.6);
-      color: var(--white-dimmer);
+      background: rgba(4, 15, 35, 0.6);
+      color: var(--white-faint);
       cursor: pointer;
-      transition: all 0.2s;
-      border-radius: 5px 5px 0 0;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 6px 6px 0 0;
       position: relative;
       bottom: -1px;
       backdrop-filter: blur(4px);
     }
 
     .tab-btn:hover {
-      background: rgba(22, 42, 80, 0.5);
-      color: var(--accent-yellow);
-      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      background: rgba(5, 28, 64, 0.4);
+      border-color: rgba(255, 255, 255, 0.15);
     }
 
     .tab-btn.active {
-      background: var(--navy-panel);
-      color: var(--accent-yellow);
+      background: var(--panel-bg);
+      color: var(--accent-gold);
       border-color: var(--border-bright);
-      border-bottom-color: #0e1a30; /* Matches panel background color directly */
+      border-bottom-color: #031229; /* Blends into body panel flawlessly */
       font-weight: 900;
-      text-shadow: 0 0 10px var(--accent-glow);
-    }
-
-    .tab-btn.active::after {
-      content: '';
-      position: absolute; bottom: -1px; left: 0; right: 0; height: 2px;
-      background: var(--navy-panel);
     }
 
     .tab-btn.active::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent-yellow), transparent);
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--logo-blue), var(--accent-gold), var(--logo-blue));
     }
 
-    /* ── TABS BODY ── */
     .tabs-body {
-      background: var(--navy-panel);
+      background: var(--panel-bg);
       border: 1px solid var(--border-bright);
-      border-radius: 0 6px 6px 6px;
-      padding: 2rem 1.75rem;
-      min-height: 380px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 0 8px 8px 8px;
+      padding: 2.2rem 2rem;
+      min-height: 400px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .tab-panel { display: none; }
-    .tab-panel.active { display: block; animation: reveal 0.3s ease; }
+    .tab-panel.active { display: block; animation: panelReveal 0.4s ease forwards; }
 
-    @keyframes reveal {
-      from { opacity: 0; transform: translateY(8px); }
+    @keyframes panelReveal {
+      from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── PANEL HEADINGS ── */
     .panel-heading {
-      font-size: clamp(18px, 4vw, 26px);
+      font-size: 22px;
       font-weight: 900;
-      color: var(--white);
-      letter-spacing: 1px;
-      margin-bottom: 5px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
     .panel-sub {
       font-size: 13px;
       color: var(--white-dim);
-      margin-bottom: 1.6rem;
-      font-weight: 400;
+      margin-bottom: 2rem;
     }
 
-    /* ── SERVICE CATEGORIES ── */
+    /* ── QUEST CARDS GRID (GAMIFIED SERVICE GRIDS) ── */
     .cat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
     }
 
     .cat-card {
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 5px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 6px;
       overflow: hidden;
       cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
     }
 
-    .cat-card:hover { border-color: rgba(255, 255, 255, 0.3); }
+    .cat-card:hover {
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
 
     .cat-card.open {
-      border-color: var(--accent-yellow);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+      border-color: var(--logo-blue);
+      background: rgba(4, 25, 58, 0.9);
+      box-shadow: 0 0 25px rgba(0, 71, 160, 0.25);
     }
 
     .cat-header {
-      display: flex; align-items: center; gap: 10px;
-      padding: 13px 16px;
-    }
-
-    .cat-icon { font-size: 18px; flex-shrink: 0; }
-
-    .cat-name {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--white);
-      flex: 1;
-    }
-
-    .cat-chevron {
-      font-size: 10px;
-      color: var(--white-dimmer);
-      transition: transform 0.25s;
-      flex-shrink: 0;
-    }
-
-    .cat-card.open .cat-chevron { transform: rotate(180deg); color: var(--accent-yellow); }
-
-    .cat-items {
-      display: none;
-      padding: 0 16px 14px;
-      border-top: 1px solid var(--border);
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .cat-card.open .cat-items { display: flex; }
-
-    .cat-item {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: 13px;
-      color: var(--white-dim);
-      padding: 5px 0;
-      font-weight: 400;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-      line-height: 1.4;
-    }
-    .cat-item:last-child { border-bottom: none; }
-
-    .cat-item::before {
-      content: '◈';
-      color: var(--accent-yellow);
-      font-size: 9px;
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-
-    .cat-item-note {
-      color: var(--white-dimmer);
-      font-size: 11px;
-      display: block;
-      margin-top: 1px;
-    }
-
-    /* ── CONTACT TAB ── */
-    .contact-section-label {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--white-dimmer);
-      margin: 1.4rem 0 8px;
-      font-weight: 700;
-    }
-    .contact-section-label:first-of-type { margin-top: 0; }
-
-    .contact-grid { display: flex; flex-direction: column; gap: 10px; }
-
-    .contact-card {
-      display: flex; align-items: center; gap: 16px;
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 13px 18px;
-      text-decoration: none;
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 600;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .contact-card:hover {
-      border-color: var(--accent-yellow);
-      background: rgba(22, 42, 80, 0.8);
-    }
-
-    .cc-icon { font-size: 22px; flex-shrink: 0; }
-
-    .cc-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white-dimmer);
-      font-weight: 400;
-      display: block;
-      margin-top: 2px;
-    }
-
-    .wa-btn {
       display: flex; align-items: center; gap: 12px;
-      background: linear-gradient(135deg, #0d5c4a, #128C7E);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 5px;
-      padding: 13px 20px;
-      color: white;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .wa-btn:hover { opacity: 0.88; }
-
-    /* ── ABOUT TAB ── */
-    .about-body {
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--white-dim);
-      font-weight: 400;
-      margin-bottom: 1.4rem;
+      padding: 16px 18px;
     }
 
-    .cbs-tagline {
-      font-size: clamp(14px, 3vw, 17px);
-      color: var(--white);
-      border-left: 3px solid var(--accent-yellow);
-      padding-left: 18px;
-      line-height: 1.6;
-      margin-top: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 10px;
-      margin-top: 1.8rem;
-    }
-
-    .pillar {
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--border-bright);
-      border-radius: 4px;
-      padding: 14px 12px;
-      text-align: center;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .pillar:hover { border-top-color: var(--accent-yellow); background: rgba(22, 42, 80, 0.8); }
-    .pillar .p-icon { font-size: 22px; display: block; margin-bottom: 6px; }
-    .pillar .p-label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white);
-      font-weight: 800;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      margin-top: 3.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-logo {
-      font-size: 14px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--white);
-      font-weight: 900;
-    }
-
-    .footer-copy {
-      font-size: 11px;
-      color: var(--white-dimmer);
-      margin-top: 6px;
-      letter-spacing: 1px;
-    }
-  </style>
-</head>
-<body>
-
-<div class="bg-fixed"></div>
-<div class="bg-glow"></div>
-<div class="bg-dots"></div>
-
-<div class="wrapper">
-
-  <header>
-    <div class="logo-wrap">
-      <img src="logo.png" alt="Cywis Business Solutions logo" />
-    </div>
-    <h1 class="site-title">Cywis Business Solutions</h1>
-    <p class="site-sub">Tech · Media · Engineering</p>
-    <div class="divider-line">
-      <div class="ln"></div><div class="dot"></div><div class="ln"></div>
-    </div>
-  </header>
-
-  <div class="welcome">
-    <div class="welcome-heading">Welcome to Cywis Business Solutions</div>
-    <div class="welcome-body">
-      Your One-Stop Shop for Tech, Media and Engineering.<br>
-      We empower businesses with premium quality, customised solutions —
-      delivered with precision, creativity and excellence.
-    </div>
-  </div>
-
-  <div class="tabs-nav">
-    <button class="tab-btn active" onclick="openTab(event,'services')">Services</button>
-    <button class="tab-btn" onclick="openTab(event,'contact')">Contact</button>
-    <button class="tab-btn" onclick="openTab(event,'about')">About</button>
-  </div>
-
-  <div class="tabs-body">
-
-    <div class="tab-panel active" id="tab-services">
-      <div class="panel-heading">What We Offer</div>
-      <p class="panel-sub">Select a category to explore our services</p>
-      <div class="cat-grid">
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🎨</span>
-            <span class="cat-name">Design &amp; Branding</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Graphic Design</div>
-            <div class="cat-item">Branding</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🖨️</span>
-            <span class="cat-name">Printing Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">General Printing</div>
-            <div class="cat-item">
-              Large Format Printing
-              <span class="cat-item-note">Flex, Banners, Stickers, etc.</span>
-            </div>
-            <div class="cat-item">Print &amp; Copy</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">💻</span>
-            <span class="cat-name">Technology Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">ICT Vocational Training</div>
-            <div class="cat-item">Phone &amp; Laptop Repairs</div>
-            <div class="cat-item">Phone Swapping</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🛒</span>
-            <span class="cat-name">Sales</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Gadgets &amp; Accessories</div>
-            <div class="cat-item">Stationery</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">⚙️</span>
-            <span class="cat-name">Other Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Online Registration</div>
-            <div class="cat-item">CAC Registration</div>
-            <div class="cat-item">Passport Photograph</div>
-            <div class="cat-item">Binding &amp; Lamination</div>
-            <div class="cat-item">Scanning</div>
-            <div class="cat-item">Wall Frames &amp; Display</div>
-            <div class="cat-item">Signs &amp; Exhibitions</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="tab-panel" id="tab-contact">
-      <div class="panel-heading">Reach Us</div>
-      <p class="panel-sub">We are always available — call, message or connect with us</p>
-
-      <div class="contact-section-label">Phone</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="tel:+2348021104657">
-          <span class="cc-icon">📲</span>
-          <div>+234 802 110 4657<span class="cc-label">Tap to call</span></div>
-        </a>
-        <a class="contact-card" href="tel:+2348032080783">
-          <span class="cc-icon">📲</span>
-          <div>+234 803 2080 783<span class="cc-label">Tap to call</span></div>
-        </a>
-      </div>
-
-      <div class="contact-section-label">Email</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:cywisbusinesssolutions@gmail.com">
-          <span class="cc-icon">✉️</span>
-          <div>cywisbusinesssolutions@gmail.com<span class="cc-label">Send an email</span></div>
-        </a>
-      </div>
-
-      <div class="contact-section-label">Social Media</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="https://facebook.com/cywisbusinesssolutions" target="_blank">
-          <span class="cc-icon">📘</span>
-          <div>Cywis Business Solutions<span class="cc-label">Facebook</span></div>
-        </a>
-        <a class="contact-card" href="https://instagram.com/cywisbusinesssolutions" target="_blank">
-          <span class="cc-icon">📸</span>
-          <div>Cywis Business Solutions<span class="cc-label">Instagram</span></div>
-        </a>
-      </div>
-
-      <div class="contact-section-label" style="margin-top:1.4rem;">WhatsApp</div>
-      <a class="wa-btn" href="https://wa.me/2348021104657" target="_blank">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.885a.5.5 0 0 0 .606.607l6.162-1.52A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.88 9.88 0 0 1-5.031-1.374l-.36-.214-3.733.921.959-3.638-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.467 0 9.9 4.434 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/>
-        </svg>
-        Chat on WhatsApp
-      </a>
-    </div>
-
-    <div class="tab-panel" id="tab-about">
-      <div class="panel-heading">About Us</div>
-      <p class="panel-sub">Who we are and what we stand for</p>
-      <p class="about-body">
-        Cywis Business Solutions provides smart technology, branding, and business solutions.
-        From design, printing, and training to gadget sales, device repairs and phone swaps,
-        we deliver quality services that help individuals and businesses grow with confidence.
-      </p>
-      <div class="cbs-tagline">
-        CBS — Your One-Stop Shop for Tech, Media &amp; Engineering.
-      </div>
-      <div class="pillars">
-        <div class="pillar"><span class="p-icon">🎯</span><span class="p-label">Customised</span></div>
-        <div class="pillar"><span class="p-icon">🏆</span><span class="p-label">Premium Quality</span></div>
-        <div class="pillar"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
-        <div class="pillar"><span class="p-icon">⚡</span><span class="p-label">Anytime</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <div class="footer-logo">Cywis Business Solutions</div>
-    <div class="footer-copy">&copy; 2026 · Ota, Ogun State, Nigeria · All rights reserved</div>
-  </footer>
-
-</div>
-
-<script>
-  function openTab(e, id) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    e.currentTarget.classList.add('active');
-    document.getElementById('tab-' + id).classList.add('active');
-  }
-
-  function toggleCat(card) {
-    const isOpen = card.classList.contains('open');
-    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
-    if (!isOpen) card.classList.add('open');
-  }
-</script>
-</body>
-</html>
+    .cat-icon {
+      font-size: 20px;
+      background: rgba(255,255,255,0.04);
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 6
