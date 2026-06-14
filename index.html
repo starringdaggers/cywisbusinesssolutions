@@ -1,328 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cywis Business Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      /* Exact Electric Blue from your shade crop */
-      --logo-blue:      #0000ff;
-      --logo-blue-glow: rgba(0, 0, 255, 0.25);
-      --dark-bg:        #010416;
-      --panel-bg:       rgba(2, 6, 32, 0.85);
-      --card-bg:        rgba(4, 12, 58, 0.5);
-      
-      /* Gamified Accents */
-      --accent-gold:    #ffd700;
-      --xp-green:       #00ffcc;
-      
-      /* Systems */
-      --border-soft:    rgba(255, 255, 255, 0.08);
-      --border-bright:  rgba(0, 0, 255, 0.4);
-      --white:          #ffffff;
-      --white-dim:      rgba(255, 255, 255, 0.75);
-      --white-faint:    rgba(255, 255, 255, 0.4);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cywis Business Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            /* Deep corporate blue base to match your logo */
+            background-color: #020b18; 
+            /* Subtle premium royal blue gradient overlay */
+            background-image: radial-gradient(circle at 50% 30%, #0047a0 0%, #020b18 70%);
+            background-attachment: fixed;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
 
-    body {
-      font-family: 'Raleway', sans-serif;
-      background: var(--dark-bg);
-      color: var(--white);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+        .logo-container {
+            margin-bottom: 20px;
+        }
 
-    .bg-fixed {
-      position: fixed; inset: 0; z-index: 0;
-      background:
-        radial-gradient(circle at 50% 15%, var(--logo-blue-glow) 0%, transparent 60%),
-        linear-gradient(160deg, #010312 0%, #020727 60%, #010312 100%);
-    }
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: contain;
+            background-color: #ffffff;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
 
-    .bg-grid {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.05;
-      background-image: 
-        linear-gradient(to right, #fff 1px, transparent 1px),
-        linear-gradient(to bottom, #fff 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
 
-    .wrapper {
-      position: relative; z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem 5rem;
-    }
+        .subtitle {
+            font-size: 14px;
+            font-weight: 300;
+            color: #b0c4de;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
-    header { text-align: center; padding: 1.5rem 0 2rem; }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .logo-container {
-      position: relative;
-      width: 110px; height: 110px;
-      margin: 0 auto 1.5rem;
-    }
+        .tab-button {
+            background: none;
+            border: none;
+            color: #b0c4de;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 2px solid transparent;
+        }
 
-    .logo-wrap {
-      width: 100%; height: 100%;
-      background: #ffffff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      padding: 12px;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 0 25px rgba(0, 0, 255, 0.4);
-      border: 3px solid var(--logo-blue);
-    }
+        .tab-button:hover {
+            color: #ffffff;
+        }
 
-    .logo-wrap img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+        .tab-button.active {
+            color: #ffd700; /* Beautiful contrast gold for active states */
+            border-bottom: 2px solid #ffd700;
+        }
 
-    .logo-pulse {
-      position: absolute; inset: -6px;
-      border: 2px dashed var(--accent-gold);
-      border-radius: 50%;
-      z-index: 1;
-      animation: rotateRing 25s linear infinite;
-      opacity: 0.6;
-    }
+        .tab-content {
+            display: none;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
 
-    @keyframes rotateRing {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+        .tab-content.active {
+            display: block;
+        }
 
-    .site-title {
-      font-size: clamp(22px, 5vw, 34px);
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(0, 0, 255, 0.6);
-    }
+        .category {
+            margin-bottom: 20px;
+        }
 
-    .site-sub {
-      font-size: 11px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--white-dim);
-      margin-top: 10px;
-      font-weight: 600;
-    }
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
 
-    .hud-bar {
-      background: var(--panel-bg);
-      border: 1px solid var(--border-soft);
-      border-top: 2px solid var(--logo-blue);
-      border-radius: 8px;
-      padding: 1.2rem 1.5rem;
-      margin-bottom: 2.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.5rem;
-      backdrop-filter: blur(10px);
-    }
+        .category-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-    .hud-stat { display: flex; flex-direction: column; justify-content: center; }
-    .hud-label { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--white-faint); margin-bottom: 4px; font-weight: 700; }
-    .hud-value { font-size: 15px; font-weight: 800; color: var(--white); display: flex; align-items: center; gap: 6px; }
+        .category-items li {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #e0e0e0;
+            position: relative;
+            padding-left: 20px;
+        }
 
-    .badge-gold {
-      color: var(--accent-gold); font-size: 11px; border: 1px solid rgba(255, 215, 0, 0.3);
-      padding: 1px 6px; border-radius: 3px; background: rgba(255, 215, 0, 0.05);
-    }
+        .category-items li::before {
+            content: "•";
+            color: #0047a0;
+            font-weight: bold;
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
 
-    .xp-container { width: 100%; }
-    .xp-bar-bg { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-top: 5px; }
-    .xp-bar-fill { width: 75%; height: 100%; background: linear-gradient(90deg, var(--logo-blue), var(--xp-green)); box-shadow: 0 0 8px var(--xp-green); }
+        .contact-item {
+            margin-bottom: 15px;
+        }
 
-    .tabs-nav { display: flex; gap: 6px; }
+        .contact-item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: inline-block;
+        }
 
-    .tab-btn {
-      font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
-      padding: 14px 24px; border: 1px solid var(--border-soft); border-bottom: none; background: rgba(1, 4, 22, 0.7);
-      color: var(--white-faint); cursor: pointer; border-radius: 6px 6px 0 0; position: relative; bottom: -1px;
-    }
+        .contact-item a:hover {
+            color: #ffd700;
+        }
 
-    .tab-btn:hover { color: var(--white); background: rgba(4, 12, 58, 0.3); }
-    .tab-btn.active { background: var(--panel-bg); color: var(--white); border-color: var(--border-soft); border-top: 3px solid var(--logo-blue); font-weight: 900; }
+        .contact-label {
+            font-size: 12px;
+            color: #b0c4de;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+            letter-spacing: 1px;
+        }
 
-    .tabs-body {
-      background: var(--panel-bg); border: 1px solid var(--border-soft); border-radius: 0 8px 8px 8px;
-      padding: 2rem; min-height: 400px; backdrop-filter: blur(10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
+        .about-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
 
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; animation: panelReveal 0.3s ease-out forwards; }
-
-    @keyframes panelReveal {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .panel-heading { font-size: 20px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
-    .panel-sub { font-size: 13px; color: var(--white-dim); margin-bottom: 2rem; }
-
-    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
-    .cat-card { background: var(--card-bg); border: 1px solid var(--border-soft); border-radius: 6px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
-    .cat-card:hover { border-color: rgba(0,0,255,0.4); background: rgba(4, 12, 58, 0.7); }
-    .cat-card.open { border-color: var(--logo-blue); background: rgba(2, 8, 43, 0.9); box-shadow: 0 0 15px rgba(0,0,244,0.2); }
-    .cat-header { display: flex; align-items: center; gap: 12px; padding: 16px; }
-    .cat-icon { font-size: 18px; background: rgba(255,255,255,0.03); width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 6px; border: 1px solid var(--border-soft); }
-    .cat-name { font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; flex: 1; }
-    .cat-chevron { font-size: 10px; color: var(--white-faint); transition: transform 0.2s; }
-    .cat-card.open .cat-chevron { transform: rotate(180deg); color: var(--accent-gold); }
-
-    .cat-items { display: none; padding: 0 16px 16px; border-top: 1px solid rgba(255,255,255,0.04); flex-direction: column; gap: 8px; }
-    .cat-card.open .cat-items { display: flex; }
-    .cat-item { font-size: 13px; color: var(--white-dim); padding-top: 6px; display: flex; flex-direction: column; }
-    .cat-item::before { content: '✓'; color: var(--xp-green); margin-right: 8px; font-weight: 900; display: inline-block; }
-    .cat-item-note { color: var(--white-faint); font-size: 11px; margin-left: 18px; margin-top: 2px; }
-
-    .contact-section-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--white-faint); margin: 1.5rem 0 8px; font-weight: 800; }
-    .contact-section-label:first-of-type { margin-top: 0; }
-    .contact-grid { display: flex; flex-direction: column; gap: 10px; }
-    
-    .contact-card {
-      display: flex; align-items: center; gap: 16px; background: var(--card-bg); border: 1px solid var(--border-soft);
-      border-radius: 6px; padding: 14px 20px; text-decoration: none; color: var(--white); font-size: 14px; font-weight: 600; transition: all 0.2s;
-    }
-    .contact-card:hover { border-color: var(--logo-blue); background: rgba(4, 12, 58, 0.8); transform: translateX(3px); }
-    .cc-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; margin-top: 2px; }
-
-    .wa-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      background: #128C7E; border-radius: 6px; padding: 14px; color: white;
-      font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; margin-top: 15px;
-    }
-
-    .about-body { font-size: 15px; line-height: 1.8; color: var(--white-dim); }
-    .cbs-tagline { font-size: 16px; color: var(--white); border-left: 3px solid var(--logo-blue); padding-left: 16px; margin: 1.5rem 0; font-weight: 800; }
-    .pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
-    
-    .pillar { background: var(--card-bg); border: 1px solid var(--border-soft); border-top: 3px solid var(--logo-blue); border-radius: 6px; padding: 14px; text-align: center; }
-    .pillar .p-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-    .pillar .p-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 800; }
-
-    footer { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-soft); }
-    .footer-logo { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--white-faint); font-weight: 800; }
-    .footer-copy { font-size: 11px; color: var(--white-faint); margin-top: 6px; }
-  </style>
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #b0c4de;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="bg-fixed"></div>
-<div class="bg-grid"></div>
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.png" alt="Cywis Business Solutions Logo">
+        </div>
+        <h1>Cywis Business Solutions</h1>
+        <div class="subtitle">Tech · Media · Engineering</div>
 
-<div class="wrapper">
-
-  <header>
-    <div class="logo-container">
-      <div class="logo-pulse"></div>
-      <div class="logo-wrap">
-        <img src="logo.png" alt="Cywis Business Solutions Logo">
-      </div>
-    </div>
-    <h1 class="site-title">Cywis Business Solutions</h1>
-    <p class="site-sub">Tech · Media · Engineering</p>
-  </header>
-
-  <div class="hud-bar">
-    <div class="hud-stat">
-      <div class="hud-label">Operational Status</div>
-      <div class="hud-value">Online <span class="badge-gold">LVL 1</span></div>
-    </div>
-    <div class="hud-stat">
-      <div class="hud-label">Service Quality</div>
-      <div class="hud-value" style="color: var(--accent-gold);">Premium Tier</div>
-    </div>
-    <div class="hud-stat">
-      <div class="hud-label">Client Progress XP</div>
-      <div class="xp-container">
-        <div class="hud-value" style="font-size: 13px;">750 / 1000 XP</div>
-        <div class="xp-bar-bg"><div class="xp-bar-fill"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tabs-nav">
-    <button class="tab-btn active" onclick="openTab(event,'services')">Services</button>
-    <button class="tab-btn" onclick="openTab(event,'contact')">Contact</button>
-    <button class="tab-btn" onclick="openTab(event,'about')">About</button>
-  </div>
-
-  <div class="tabs-body">
-
-    <div class="tab-panel active" id="tab-services">
-      <div class="panel-heading">Available Tracks</div>
-      <p class="panel-sub">Select an enterprise branch to deploy details</p>
-      
-      <div class="cat-grid">
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🎨</span>
-            <span class="cat-name">Design &amp; Branding</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Graphic Design</div>
-            <div class="cat-item">Corporate Branding</div>
-          </div>
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab(event, 'services')">Services</button>
+            <button class="tab-button" onclick="switchTab(event, 'contact')">Contact</button>
+            <button class="tab-button" onclick="switchTab(event, 'about')">About</button>
         </div>
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🖨️</span>
-            <span class="cat-name">Printing Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">General Industrial Printing</div>
-            <div class="cat-item">Large Format Processing<span class="cat-item-note">Flex, Banners, Stickers, etc.</span></div>
-            <div class="cat-item">Print &amp; Copy Management</div>
-          </div>
+        <div id="services" class="tab-content active">
+            <div class="category">
+                <div class="category-title">Design & Branding</div>
+                <ul class="category-items">
+                    <li>Graphic Design</li>
+                    <li>Corporate Branding</li>
+                </ul>
+            </div>
+            <div class="category">
+                <div class="category-title">Printing Services</div>
+                <ul class="category-items">
+                    <li>General Industrial Printing</li>
+                    <li>Large Format Processing (Flex, Banners, Stickers, etc.)</li>
+                    <li>Print & Copy Management</li>
+                </ul>
+            </div>
+            <div class="category">
+                <div class="category-title">Technology Services</div>
+                <ul class="category-items">
+                    <li>ICT Vocational Training</li>
+                    <li>Hardware Repairs (Phones & Laptops)</li>
+                    <li>Smart Device Swapping Ecosystems</li>
+                </ul>
+            </div>
+            <div class="category">
+                <div class="category-title">Sales Vault</div>
+                <ul class="category-items">
+                    <li>Premium Gadgets & Accessories</li>
+                    <li>Corporate Stationeries</li>
+                </ul>
+            </div>
+            <div class="category">
+                <div class="category-title">Utility Operations</div>
+                <ul class="category-items">
+                    <li>Online Portal Registrations</li>
+                    <li>CAC Corporate Enrolment</li>
+                    <li>Biometric Passport Photography</li>
+                    <li>Binding & Protective Lamination</li>
+                    <li>High-Resolution Document Scanning</li>
+                    <li>Bespoke Wall Frames & Media Displays</li>
+                    <li>Commercial Signs & Exhibition Design</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">💻</span>
-            <span class="cat-name">Technology Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">ICT Vocational Training</div>
-            <div class="cat-item">Hardware Repairs (Phones &amp; Laptops)</div>
-            <div class="cat-item">Smart Device Swapping Ecosystems</div>
-          </div>
+        <div id="contact" class="tab-content">
+            <div class="category-title">Get In Touch</div>
+            <div class="contact-item">
+                <div class="contact-label">Call Us</div>
+                <a href="tel:+2348021104657">+234 802 110 4657</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Secondary Line</div>
+                <a href="tel:+2348032080783">+234 803 2080 783</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <a href="mailto:cywisbusinesssolutions@gmail.com">cywisbusinesssolutions@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">WhatsApp</div>
+                <a href="https://wa.me/2348021104657" target="_blank">Chat with us on WhatsApp</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Facebook</div>
+                <a href="https://facebook.com/cywisbusinesssolutions" target="_blank">Facebook Page</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Instagram</div>
+                <a href="https://instagram.com/cywisbusinesssolutions" target="_blank">Instagram Feed</a>
+            </div>
         </div>
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">🛒</span>
-            <span class="cat-name">Sales Vault</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Premium Gadgets &amp; Accessories</div>
-            <div class="cat-item">Corporate Stationeries</div>
-          </div>
+        <div id="about" class="tab-content">
+            <div class="category-title">Our Architecture</div>
+            <p class="about-text">
+                Cywis Business Solutions provides smart technology, branding, and business solutions. From design, printing, and training to gadget sales, device repairs, and phone swaps, we deliver premium quality services that help individuals and enterprises scale with absolute confidence.
+            </p>
+            <p class="about-text" style="font-weight: 600; margin-top: 15px; color: #ffd700;">
+                CBS — Your One-Stop Shop for Tech, Media & Engineering.
+            </p>
         </div>
 
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">⚙️</span>
-            <span class="cat-name">Utility Operations</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Online Portal Registrations</div>
-            <div class="cat-item">CAC Corporate Enrolment</div>
-            <div class="cat-item">Biometric Passport Photography</div>
-            <div class="cat-item">Binding &amp; Protective Lamination</div>
-            <div class="cat-item">High-Resolution Document Scanning</div>
+        <footer>
+            &copy; 2026 · Cywis Business Solutions · Ota, Ogun State, Nigeria
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(event, tabId) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            // Show current tab content and add active class to button
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
