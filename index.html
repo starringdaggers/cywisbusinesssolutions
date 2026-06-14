@@ -7,15 +7,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Background colors adjusted to match your deep logo blue */
-      --electric:      #002654;
-      --electric-mid:  #003370;
-      --electric-light:#0047a0;
-      --electric-panel:rgba(0, 38, 84, 0.7);
-      --electric-card: rgba(0, 26, 60, 0.65);
-      --electric-deep: #010a14;
+      /* Befitting Deep Corporate Royal Blue System */
+      --electric:      #002244;
+      --electric-mid:  #003366;
+      --electric-light:#004488;
+      --electric-panel:rgba(0, 34, 68, 0.75);
+      --electric-card: rgba(0, 20, 40, 0.65);
+      --electric-deep: #010810;
       
-      /* Kept exactly as your original code */
+      /* Specific Befitting Accent Highlights for each Tab Area */
+      --color-about:   #00ffcc; /* Sleek Cyan for Identity */
+      --color-contact: #ffcc00; /* Warm Gold for Communication */
+      --color-services:#0099ff; /* Vivid Blue for Technical tracks */
+      
+      /* Structural System maintained exactly from your file */
       --border:        rgba(255,255,255,0.18);
       --border-bright: rgba(255,255,255,0.35);
       --white:         #ffffff;
@@ -39,9 +44,9 @@
     .bg-fixed {
       position: fixed; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse 75% 55% at 12% 18%, rgba(0, 71, 160, 0.45) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 45% at 88% 82%, rgba(1, 10, 20, 0.8) 0%, transparent 60%),
-        linear-gradient(160deg, #01060d 0%, #002654 45%, #01060d 100%);
+        radial-gradient(ellipse 75% 55% at 12% 18%, rgba(0, 68, 136, 0.4) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 45% at 88% 82%, rgba(1, 8, 16, 0.85) 0%, transparent 60%),
+        linear-gradient(160deg, #01050a 0%, #002244 45%, #01050a 100%);
     }
 
     .bg-dots {
@@ -52,7 +57,7 @@
 
     .bg-glow {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: radial-gradient(ellipse 50% 35% at 50% 0%, rgba(0, 71, 160, 0.22) 0%, transparent 70%);
+      background: radial-gradient(ellipse 50% 35% at 50% 0%, rgba(0, 68, 136, 0.2) 0%, transparent 70%);
     }
 
     /* ── CORNER ORNAMENTS ── */
@@ -82,7 +87,7 @@
       background: white;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 6px rgba(255,255,255,0.1), 0 0 40px rgba(0,71,160,0.35);
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.1), 0 0 40px rgba(0,68,136,0.35);
       padding: 11px;
     }
 
@@ -190,9 +195,13 @@
       border-color: rgba(255,255,255,0.3);
     }
 
+    /* Premium dynamic active button underlines & text shifts */
+    .tab-btn[onclick*="about"].active { color: var(--color-about); }
+    .tab-btn[onclick*="contact"].active { color: var(--color-contact); }
+    .tab-btn[onclick*="services"].active { color: var(--color-services); }
+
     .tab-btn.active {
       background: var(--electric-panel);
-      color: var(--white);
       border-color: rgba(255,255,255,0.28);
       border-bottom-color: var(--electric-panel);
       font-weight: 900;
@@ -204,15 +213,22 @@
       background: var(--electric-panel);
     }
 
-    .tab-btn.active::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+    .tab-btn[onclick*="about"].active::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-about), transparent);
+    }
+    .tab-btn[onclick*="contact"].active::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-contact), transparent);
+    }
+    .tab-btn[onclick*="services"].active::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-services), transparent);
     }
 
     /* ── TABS BODY ── */
     .tabs-body {
-      background: rgba(0, 38, 84, 0.55);
+      background: rgba(0, 34, 68, 0.55);
       border: 1px solid rgba(255,255,255,0.18);
       border-top: none;
       border-radius: 0 6px 6px 6px;
@@ -238,6 +254,10 @@
       margin-bottom: 5px;
       text-transform: uppercase;
     }
+    
+    #tab-about .panel-heading { color: var(--color-about); }
+    #tab-contact .panel-heading { color: var(--color-contact); }
+    #tab-services .panel-heading { color: var(--color-services); }
 
     .panel-sub {
       font-size: 13px;
@@ -266,7 +286,7 @@
 
     .cat-card.open {
       border-color: rgba(255,255,255,0.55);
-      box-shadow: 0 0 22px rgba(0,71,160,0.2);
+      box-shadow: 0 0 22px rgba(0,68,136,0.2);
     }
 
     .cat-header {
@@ -317,7 +337,7 @@
 
     .cat-item::before {
       content: '◈';
-      color: rgba(255,255,255,0.45);
+      color: var(--color-services);
       font-size: 9px;
       flex-shrink: 0;
       margin-top: 3px;
@@ -358,7 +378,7 @@
 
     .contact-card:hover {
       border-color: rgba(255,255,255,0.42);
-      background: rgba(0, 47, 106, 0.65);
+      background: rgba(0, 34, 68, 0.65);
     }
 
     .cc-icon { font-size: 22px; flex-shrink: 0; }
@@ -401,7 +421,7 @@
     .cbs-tagline {
       font-size: clamp(14px, 3vw, 17px);
       color: var(--white);
-      border-left: 3px solid rgba(255,255,255,0.55);
+      border-left: 3px solid var(--color-about);
       padding-left: 18px;
       line-height: 1.6;
       margin-top: 1.5rem;
@@ -425,7 +445,7 @@
       text-align: center;
       transition: border-color 0.2s, background 0.2s;
     }
-    .pillar:hover { border-top-color: var(--white); background: rgba(0, 47, 106, 0.55); }
+    .pillar:hover { border-top-color: var(--color-about); background: rgba(0, 34, 68, 0.55); }
     .pillar .p-icon { font-size: 22px; display: block; margin-bottom: 6px; }
     .pillar .p-label {
       font-size: 10px;
@@ -493,14 +513,79 @@
   </div>
 
   <div class="tabs-nav">
-    <button class="tab-btn active" onclick="openTab(event,'services')">Services</button>
+    <button class="tab-btn active" onclick="openTab(event,'about')">About</button>
     <button class="tab-btn" onclick="openTab(event,'contact')">Contact</button>
-    <button class="tab-btn" onclick="openTab(event,'about')">About</button>
+    <button class="tab-btn" onclick="openTab(event,'services')">Services</button>
   </div>
 
   <div class="tabs-body">
 
-    <div class="tab-panel active" id="tab-services">
+    <div class="tab-panel active" id="tab-about">
+      <div class="panel-heading">About Us</div>
+      <p class="panel-sub">Who we are and what we stand for</p>
+      <p class="about-body">
+        Cywis Business Solutions provides smart technology, branding, and business solutions.
+        From design, printing, and training to gadget sales, device repairs and phone swaps,
+        we deliver quality services that help individuals and businesses grow with confidence.
+      </p>
+      <div class="cbs-tagline">
+        CBS — Your One-Stop Shop for Tech, Media &amp; Engineering.
+      </div>
+      <div class="pillars">
+        <div class="pillar"><span class="p-icon">🎯</span><span class="p-label">Customised</span></div>
+        <div class="pillar"><span class="p-icon">🏆</span><span class="p-label">Premium Quality</span></div>
+        <div class="pillar"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
+        <div class="pillar"><span class="p-icon">⚡</span><span class="p-label">Anytime</span></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-contact">
+      <div class="panel-heading">Reach Us</div>
+      <p class="panel-sub">We are always available — call, message or connect with us</p>
+
+      <div class="contact-section-label">Phone</div>
+      <div class="contact-grid">
+        <a class="contact-card" href="tel:+2348021104657">
+          <span class="cc-icon">📲</span>
+          <div>+234 802 110 4657<span class="cc-label">Tap to call</span></div>
+        </a>
+        <a class="contact-card" href="tel:+2348032080783">
+          <span class="cc-icon">📲</span>
+          <div>+234 803 2080 783<span class="cc-label">Tap to call</span></div>
+        </a>
+      </div>
+
+      <div class="contact-section-label">Email</div>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:cywisbusinesssolutions@gmail.com">
+          <span class="cc-icon">✉️</span>
+          <div>cywisbusinesssolutions@gmail.com<span class="cc-label">Send an email</span></div>
+        </a>
+      </div>
+
+      <div class="contact-section-label">Social Media</div>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://facebook.com/cywisbusinesssolutions" target="_blank">
+          <span class="cc-icon">📘</span>
+          <div>Cywis Business Solutions<span class="cc-label">Facebook</span></div>
+        </a>
+        <a class="contact-card" href="https://instagram.com/cywisbusinesssolutions" target="_blank">
+          <span class="cc-icon">📸</span>
+          <div>Cywis Business Solutions<span class="cc-label">Instagram</span></div>
+        </a>
+      </div>
+
+      <div class="contact-section-label" style="margin-top:1.4rem;">WhatsApp</div>
+      <a class="wa-btn" href="https://wa.me/2348021104657" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.885a.5.5 0 0 0 .606.607l6.162-1.52A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.88 9.88 0 0 1-5.031-1.374l-.36-.214-3.733.921.959-3.638-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.467 0 9.9 4.434 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/>
+        </svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <div class="tab-panel" id="tab-services">
       <div class="panel-heading">What We Offer</div>
       <p class="panel-sub">Select a category to explore our services</p>
       <div class="cat-grid">
@@ -553,118 +638,4 @@
             <span class="cat-chevron">▼</span>
           </div>
           <div class="cat-items">
-            <div class="cat-item">Gadgets &amp; Accessories</div>
-            <div class="cat-item">Stationery</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="toggleCat(this)">
-          <div class="cat-header">
-            <span class="cat-icon">⚙️</span>
-            <span class="cat-name">Other Services</span>
-            <span class="cat-chevron">▼</span>
-          </div>
-          <div class="cat-items">
-            <div class="cat-item">Online Registration</div>
-            <div class="cat-item">CAC Registration</div>
-            <div class="cat-item">Passport Photograph</div>
-            <div class="cat-item">Binding &amp; Lamination</div>
-            <div class="cat-item">Scanning</div>
-            <div class="cat-item">Wall Frames &amp; Display</div>
-            <div class="cat-item">Signs &amp; Exhibitions</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="tab-panel" id="tab-contact">
-      <div class="panel-heading">Reach Us</div>
-      <p class="panel-sub">We are always available — call, message or connect with us</p>
-
-      <div class="contact-section-label">Phone</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="tel:+2348021104657">
-          <span class="cc-icon">📲</span>
-          <div>+234 802 110 4657<span class="cc-label">Tap to call</span></div>
-        </a>
-        <a class="contact-card" href="tel:+2348032080783">
-          <span class="cc-icon">📲</span>
-          <div>+234 803 2080 783<span class="cc-label">Tap to call</span></div>
-        </a>
-      </div>
-
-      <div class="contact-section-label">Email</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:cywisbusinesssolutions@gmail.com">
-          <span class="cc-icon">✉️</span>
-          <div>cywisbusinesssolutions@gmail.com<span class="cc-label">Send an email</span></div>
-        </a>
-      </div>
-
-      <div class="contact-section-label">Social Media</div>
-      <div class="contact-grid">
-        <a class="contact-card" href="https://facebook.com/cywisbusinesssolutions" target="_blank">
-          <span class="cc-icon">📘</span>
-          <div>Cywis Business Solutions<span class="cc-label">Facebook</span></div>
-        </a>
-        <a class="contact-card" href="https://instagram.com/cywisbusinesssolutions" target="_blank">
-          <span class="cc-icon">📸</span>
-          <div>Cywis Business Solutions<span class="cc-label">Instagram</span></div>
-        </a>
-      </div>
-
-      <div class="contact-section-label" style="margin-top:1.4rem;">WhatsApp</div>
-      <a class="wa-btn" href="https://wa.me/2348021104657" target="_blank">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.885a.5.5 0 0 0 .606.607l6.162-1.52A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.88 9.88 0 0 1-5.031-1.374l-.36-.214-3.733.921.959-3.638-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.467 0 9.9 4.434 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/>
-        </svg>
-        Chat on WhatsApp
-      </a>
-    </div>
-
-    <div class="tab-panel" id="tab-about">
-      <div class="panel-heading">About Us</div>
-      <p class="panel-sub">Who we are and what we stand for</p>
-      <p class="about-body">
-        Cywis Business Solutions provides smart technology, branding, and business solutions.
-        From design, printing, and training to gadget sales, device repairs and phone swaps,
-        we deliver quality services that help individuals and businesses grow with confidence.
-      </p>
-      <div class="cbs-tagline">
-        CBS — Your One-Stop Shop for Tech, Media &amp; Engineering.
-      </div>
-      <div class="pillars">
-        <div class="pillar"><span class="p-icon">🎯</span><span class="p-label">Customised</span></div>
-        <div class="pillar"><span class="p-icon">🏆</span><span class="p-label">Premium Quality</span></div>
-        <div class="pillar"><span class="p-icon">💰</span><span class="p-label">Affordable</span></div>
-        <div class="pillar"><span class="p-icon">⚡</span><span class="p-label">Anytime</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <div class="footer-logo">Cywis Business Solutions</div>
-    <div class="footer-copy">&copy; 2026 · Ota, Ogun State, Nigeria · All rights reserved</div>
-  </footer>
-
-</div>
-
-<script>
-  function openTab(e, id) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    e.currentTarget.classList.add('active');
-    document.getElementById('tab-' + id).classList.add('active');
-  }
-
-  function toggleCat(card) {
-    const isOpen = card.classList.contains('open');
-    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
-    if (!isOpen) card.classList.add('open');
-  }
-</script>
-</body>
-</html>
+            <div class="cat-item">
