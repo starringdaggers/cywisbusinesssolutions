@@ -26,16 +26,18 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Creato Display', 'Raleway', sans-serif;
       background: var(--off-white);
       color: #1a1a2e;
       overflow-x: hidden;
     }
 
-    /* ── FONTS: Creato Display for all headings ── */
-    h1, h2, h3, h4, h5, .hero-title, .section-title, .about-title, .print-title, .office-strip-text h2 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 900;
+    /* ── FONTS: Creato Display everywhere ── */
+    h1, h2, h3, h4, h5, p, a, span, div, li, input, textarea, button,
+    .hero-title, .section-title, .about-title, .print-title, .nav-logo-text,
+    .nav-links a, .topbar-item, .stat-label, .cat-name, .cat-item,
+    .footer-desc, .footer-col, .contact-card, .about-body, .about-tagline {
+      font-family: 'Creato Display', 'Raleway', sans-serif;
     }
 
     /* ── TOP BAR ── */
@@ -299,6 +301,37 @@
       .print-grid { grid-template-columns: repeat(2, 1fr); }
       .tech-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    /* ── ACCOUNT DETAILS ── */
+    .account-section { background: var(--off-white); padding: 5rem 1.5rem; }
+    .account-inner { max-width: 1100px; margin: 0 auto; }
+    .account-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .account-card {
+      background: white; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(11,45,143,0.10);
+      border-top: 4px solid var(--navy);
+    }
+    .account-card-header {
+      background: var(--navy); padding: 1.2rem 1.8rem;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .account-card-header .bank-icon { font-size: 22px; }
+    .account-card-header h3 { font-family: 'Creato Display', 'Raleway', sans-serif; font-size: 15px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase; }
+    .account-card-body { padding: 1.8rem; }
+    .account-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid #f0f0f0; }
+    .account-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .account-label { font-family: 'Creato Display', 'Raleway', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+    .account-value { font-family: 'Creato Display', 'Raleway', sans-serif; font-size: 16px; font-weight: 800; color: var(--navy); letter-spacing: 0.5px; }
+    .account-value.number { font-size: 20px; letter-spacing: 2px; color: var(--navy-dark); }
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
+      background: var(--off-white); border: 1px solid #e2e8f0; border-radius: 4px;
+      padding: 5px 12px; font-size: 11px; font-weight: 700; color: var(--navy);
+      cursor: pointer; font-family: 'Creato Display', 'Raleway', sans-serif;
+      transition: all 0.2s; letter-spacing: 0.5px;
+    }
+    .copy-btn:hover { background: var(--navy); color: white; border-color: var(--navy); }
+    .copy-btn.copied { background: #22c55e; color: white; border-color: #22c55e; }
+
   </style>
 </head>
 <body>
@@ -334,6 +367,7 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#services">Services</a>
+      <a href="#account">Account Details</a>
     </div>
   </div>
 </nav>
@@ -390,7 +424,7 @@
         <div class="gallery-card-label">Mugs</div>
       </div>
       <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1612540406978-5ab7c0eeef52?w=400&q=80" alt="Business Cards">
+        <img src="https://images.unsplash.com/photo-1572502742734-aab66cb4a555?w=400&q=80" alt="Business Cards">
         <div class="gallery-card-badge">Custom Print</div>
         <div class="gallery-card-label">Business Cards</div>
       </div>
@@ -450,7 +484,7 @@
         <div class="print-item-label"><div class="pi-name">Carrier Bag</div><span class="pi-badge">Custom Print</span></div>
       </div>
       <div class="print-item">
-        <img src="https://images.unsplash.com/photo-1612540406978-5ab7c0eeef52?w=300&q=80" alt="Business Card">
+        <img src="https://images.unsplash.com/photo-1572502742734-aab66cb4a555?w=300&q=80" alt="Business Card">
         <div class="print-item-overlay"></div>
         <div class="print-item-label"><div class="pi-name">Business Card</div><span class="pi-badge">Custom Print</span></div>
       </div>
@@ -680,6 +714,112 @@
   </div>
 </section>
 
+<!-- ACCOUNT DETAILS -->
+<section class="section section--light" id="account">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Payment</span>
+      <h2 class="section-title">Account Details</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 700px; margin: 0 auto;">
+      <div style="background: var(--navy); border-radius: 8px; padding: 2rem; border-top: 4px solid var(--gold-subtle);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem;">
+          <div style="width: 42px; height: 42px; background: rgba(184,134,11,0.15); border: 1px solid rgba(184,134,11,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🏦</div>
+          <span style="font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-lt);">OPay</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 12px 14px;">
+            <span style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px;">Account Number</span>
+            <span style="font-size: 20px; font-weight: 900; color: white; letter-spacing: 2px;">6103829805</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 12px 14px;">
+            <span style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px;">Account Name</span>
+            <span style="font-size: 15px; font-weight: 800; color: white;">Cywis Media</span>
+          </div>
+        </div>
+      </div>
+      <div style="background: var(--navy); border-radius: 8px; padding: 2rem; border-top: 4px solid var(--gold-subtle);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem;">
+          <div style="width: 42px; height: 42px; background: rgba(184,134,11,0.15); border: 1px solid rgba(184,134,11,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🏦</div>
+          <span style="font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-lt);">Providus Bank</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 12px 14px;">
+            <span style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px;">Account Number</span>
+            <span style="font-size: 20px; font-weight: 900; color: white; letter-spacing: 2px;">7901890509</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 12px 14px;">
+            <span style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px;">Account Name</span>
+            <span style="font-size: 15px; font-weight: 800; color: white;">Cywis Media</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNT DETAILS -->
+<section class="account-section" id="account">
+  <div class="account-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Payment Information</span>
+      <h2 class="section-title">Account Details</h2>
+      <div class="section-underline"></div>
+      <p style="margin-top:1rem; font-size:13px; color:var(--gray); font-family:'Creato Display','Raleway',sans-serif;">Make payments directly to any of the accounts below</p>
+    </div>
+    <div class="account-grid">
+
+      <!-- OPAY -->
+      <div class="account-card">
+        <div class="account-card-header">
+          <span class="bank-icon">🏦</span>
+          <h3>OPay</h3>
+        </div>
+        <div class="account-card-body">
+          <div class="account-row">
+            <span class="account-label">Bank Name</span>
+            <span class="account-value">OPay</span>
+          </div>
+          <div class="account-row">
+            <span class="account-label">Account Number</span>
+            <span class="account-value number">6103829805</span>
+            <button class="copy-btn" onclick="copyText('6103829805', this)">📋 Copy Number</button>
+          </div>
+          <div class="account-row">
+            <span class="account-label">Account Name</span>
+            <span class="account-value">Cywis Media</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROVIDUS -->
+      <div class="account-card">
+        <div class="account-card-header">
+          <span class="bank-icon">🏦</span>
+          <h3>Providus Bank</h3>
+        </div>
+        <div class="account-card-body">
+          <div class="account-row">
+            <span class="account-label">Bank Name</span>
+            <span class="account-value">Providus Bank</span>
+          </div>
+          <div class="account-row">
+            <span class="account-label">Account Number</span>
+            <span class="account-value number">7901890509</span>
+            <button class="copy-btn" onclick="copyText('7901890509', this)">📋 Copy Number</button>
+          </div>
+          <div class="account-row">
+            <span class="account-label">Account Name</span>
+            <span class="account-value">Cywis Media</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -726,6 +866,13 @@
     const isOpen = card.classList.contains('open');
     document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('open'));
     if (!isOpen) card.classList.add('open');
+  }
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerHTML = '📋 Copy Number'; btn.classList.remove('copied'); }, 2000);
+    });
   }
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
